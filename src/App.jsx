@@ -1,14 +1,14 @@
-// src/App.jsx
+// Root component that orchestrates the portfolio experience.
+// 
+// Responsibilities:
+// - Load all portfolio content and resolve cross-file references (see usePortfolioData)
+// - Apply the active theme from site.json as CSS variables
+// - Compose enabled sections based on site config, rendering them in declared order
+// - Wrap everything with the aurora background, nav, and footer
 //
-// Root component. Responsibilities:
-//   1. Load & join all portfolio data via usePortfolioData().
-//   2. Apply the colour theme from data/site.json via useTheme().
-//   3. Render the fixed aurora background, navbar, every enabled section
-//      (in the order defined by site.json#navigation.sections), and footer.
-//
-// To reorder sections, reorder the entries in data/site.json#navigation.sections
-// AND the JSX below (the nav order and the visual order are intentionally
-// kept separate so you have full control over each).
+// Design note: section visibility and order are controlled separately (nav vs page).
+// Reorder sections by updating site.json#navigation.sections AND the JSX below —
+// this lets you tweak nav vs page layout independently without fighting config.
 
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
@@ -24,8 +24,8 @@ import Contact from './components/sections/Contact';
 import { usePortfolioData } from './hooks/usePortfolioData';
 import { useTheme } from './hooks/useTheme';
 
-// Map each section id (from site.json) to its rendered component. Sections
-// not present in site.json#navigation, or with enabled: false, are skipped.
+// Map section IDs (from site.json) to their rendered components.
+// Disabled or missing sections are filtered out before rendering.
 function buildSectionMap({ profile, social, skillsByCategory, projects, experience, education }) {
   return {
     home: <Hero key="home" profile={profile} social={social} />,

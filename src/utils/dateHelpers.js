@@ -1,18 +1,14 @@
-// src/utils/dateHelpers.js
-//
-// Small, dependency-free date helpers so we don't need a date library
-// just to format "2023-02" -> "Feb 2023".
+// Lightweight date formatting without external dependencies.
+// 
+// Keeps the bundle small for what is essentially a couple of string transforms.
+// Handles the "YYYY-MM" format we use in experience.json and education.json.
 
 const MONTH_NAMES = [
   'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
 ];
 
-/**
- * Formats a "YYYY-MM" or "YYYY" string into a readable label.
- * @param {string} value - e.g. "2023-02" or "2018"
- * @returns {string} e.g. "Feb 2023" or "2018"
- */
+// Format a "YYYY-MM" or "YYYY" date string into a human-readable label.
 export function formatDate(value) {
   if (!value) return '';
   const parts = value.split('-');

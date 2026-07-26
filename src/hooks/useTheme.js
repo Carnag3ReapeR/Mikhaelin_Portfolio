@@ -1,10 +1,8 @@
-// src/hooks/useTheme.js
-//
-// Applies the colour/font values from data/site.json#theme onto the
-// document root as CSS custom properties. This means the single source of
-// truth for "what colour is the accent" is the JSON file, not scattered
-// hex codes across component CSS — update site.json and the whole site
-// re-skins on next load, no CSS edits required.
+// Inject theme config from site.json into the document root as CSS variables.
+// 
+// This pattern keeps theming logic out of CSS files: all color/font decisions
+// live in one JSON config. Update it, reload, and the whole site re-skins —
+// no CSS edits needed. Makes it safe for non-developers to customize.
 
 import { useEffect } from 'react';
 
@@ -15,7 +13,8 @@ export function useTheme(themeConfig) {
     const root = document.documentElement;
 
     Object.entries(themeConfig).forEach(([property, value]) => {
-      // Skip metadata fields like "_comment" that aren't real CSS variables.
+      // Only apply entries that look like CSS variables (start with --),
+      // skip arbitrary metadata or documentation fields in the config.
       if (!property.startsWith('--')) return;
       root.style.setProperty(property, value);
     });

@@ -1,9 +1,7 @@
-// src/hooks/useTypewriter.js
-//
-// Small typewriter effect: types out each string in `words`, pauses,
-// deletes it, then moves to the next. Powers the hero terminal's cycling
-// role text (see data/profile.json#terminal.roles). Respects
-// prefers-reduced-motion by simply showing the first word statically.
+// Typewriter effect: types, pauses, deletes, and cycles through an array of words.
+// 
+// Used by the hero terminal to animate role text from profile.json#terminal.roles.
+// Respects prefers-reduced-motion by showing the first word statically (no animation).
 
 import { useEffect, useState } from 'react';
 

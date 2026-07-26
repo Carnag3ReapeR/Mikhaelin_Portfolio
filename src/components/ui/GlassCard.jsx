@@ -1,10 +1,9 @@
-// src/components/ui/GlassCard.jsx
-//
-// Reusable frosted-glass panel. Wraps the `.glass-panel` utility class from
-// styles/glassmorphism.css so components don't repeat the same className
-// string everywhere. Pass `interactive` for cards that should lift on
-// hover (project cards, skill cards); pass `strong` for higher-contrast
-// surfaces (e.g. over busy backgrounds).
+// Reusable glassmorphism card component that centralizes the frosted-glass styling.
+// 
+// Accepts polymorphic `as` prop to render any element type. Offers modifiers:
+// - interactive: Lifts on hover (for project/skill cards)
+// - strong: Increases contrast (for cards over busy backgrounds)
+// This keeps our CSS DRY and makes styling updates easy.
 
 import PropTypes from 'prop-types';
 

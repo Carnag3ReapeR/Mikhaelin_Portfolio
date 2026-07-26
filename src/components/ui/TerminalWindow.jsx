@@ -1,8 +1,8 @@
-// src/components/ui/TerminalWindow.jsx
-//
-// The hero section's signature element: a fake code-editor-style terminal
-// window. Shows a few static "command" lines from profile.json, then a
-// cycling typewriter line built from profile.json#terminal.roles.
+// Hero section's visual anchor: a styled terminal window with typing animation.
+// 
+// Shows static command lines from profile.json, then a typewriter effect cycling
+// through profile.json#terminal.roles. The typing hooks into useTypewriter for the
+// character-by-character animation. All text comes from data, not hardcoded here.
 
 import PropTypes from 'prop-types';
 import GlassCard from './GlassCard';

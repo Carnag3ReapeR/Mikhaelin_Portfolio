@@ -1,11 +1,8 @@
-// src/utils/iconMap.js
-//
-// Our JSON data files store icon references as plain strings (e.g. "FiGithub")
-// because JSON can't hold a component reference. This map translates those
-// strings into actual react-icons components at render time.
-//
-// To add a new icon: import it below and add it to ICON_MAP with the exact
-// same key you use in the JSON file.
+// Resolve icon name strings (from JSON) to renderable React components.
+// 
+// JSON can't hold component references, so we store icon names as strings.
+// This map translates them at render time. To add an icon: import it below,
+// add it to ICON_MAP, then reference it by key name in your JSON files.
 
 import {
   FiGithub,
@@ -45,14 +42,8 @@ const ICON_MAP = {
   FiBookOpen,
 };
 
-/**
- * Resolve an icon name string (from JSON) to a renderable react-icons component.
- * Falls back to FiCode if the name isn't recognised, so a typo in a JSON file
- * never crashes the page — it just shows a generic icon.
- *
- * @param {string} name - e.g. "FiGithub"
- * @returns {React.ComponentType}
- */
+// Resolve an icon name string (from JSON) to a react-icons component.
+// Returns FiCode as a safe fallback for typos — better than crashing on render.
 export function getIcon(name) {
   return ICON_MAP[name] || FiCode;
 }

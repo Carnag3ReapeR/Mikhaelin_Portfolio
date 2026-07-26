@@ -1,8 +1,8 @@
-// src/components/ui/AuroraBackground.jsx
-//
-// Renders the fixed, full-viewport animated gradient backdrop ("aurora")
-// that sits behind every section. Mount this once near the root of the
-// app (see App.jsx) — it uses position: fixed so it never scrolls.
+// Fixed full-screen animated gradient backdrop that sits behind all content.
+// 
+// Mount this once near the root (see App.jsx). Uses position: fixed so it stays
+// put while the page scrolls. The three blob divs are animated via CSS keyframes
+// to create the aurora effect.
 
 function AuroraBackground() {
   return (

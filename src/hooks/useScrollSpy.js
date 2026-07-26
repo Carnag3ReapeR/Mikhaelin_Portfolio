@@ -1,14 +1,15 @@
-// src/hooks/useScrollSpy.js
-//
-// Tracks which section is currently in view using the IntersectionObserver
-// API (much cheaper than listening to scroll events) so the navbar can
-// highlight the active link as the user scrolls through a single-page app.
+// IntersectionObserver-based scroll spy for navbar active link highlighting.
+// 
+// Tracks which section is currently in view — much more efficient than scroll
+// event listeners for single-page apps. Picks the most-visible section when
+// multiple are partially on screen to avoid nav flicker.
 
 import { useEffect, useState } from 'react';
 
 /**
- * @param {string[]} sectionIds - element ids to observe, e.g. ['home', 'about']
- * @returns {[string, React.Dispatch<React.SetStateAction<string>>]} the active section id and a setter for manual updates
+ * Hook that tracks active section during scroll via IntersectionObserver.
+ * @param {string[]} sectionIds - Element IDs to observe (e.g., ['home', 'about', 'projects'])
+ * @returns {[string, React.Dispatch<React.SetStateAction<string>>]} active section ID and manual update setter
  */
 export function useScrollSpy(sectionIds) {
   const [activeId, setActiveId] = useState(sectionIds[0] ?? '');
@@ -22,7 +23,7 @@ export function useScrollSpy(sectionIds) {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        // Pick the entry with the greatest visible ratio to avoid flicker
+        // when two sections are both partially on screen (common near breakpoints) to avoid flicker
         // when two sections are both partially on screen.
         const mostVisible = entries
           .filter((entry) => entry.isIntersecting)
@@ -33,8 +34,8 @@ export function useScrollSpy(sectionIds) {
         }
       },
       {
-        // Treat a section as "active" once it occupies the middle band of
-        // the viewport, which feels more natural than the very top edge.
+        // Treat section as "active" once it reaches the middle viewport band.
+        // Feels more natural than triggering at the very top edge.
         rootMargin: '-30% 0px -60% 0px',
         threshold: [0, 0.25, 0.5, 0.75, 1],
       }

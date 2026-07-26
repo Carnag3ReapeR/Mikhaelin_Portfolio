@@ -1,8 +1,5 @@
-// src/components/sections/Hero.jsx
-//
-// Landing section: name, role, tagline, call-to-action buttons, social
-// links, and the signature terminal-window visual. All copy is sourced
-// from data/profile.json — edit that file to update your intro.
+// Landing section: hero intro, CTA buttons, social links, and the terminal visual.
+// All copy is sourced from site.json and profile.json — edit those to customize.
 
 import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'react-bootstrap';

@@ -1,12 +1,18 @@
 # Personal Portfolio — React + Bootstrap 5 (Glassmorphism)
 
-A fast, single-page personal portfolio built with **React**, **Bootstrap 5**,
-and a modern **glassmorphism** design — built to be hosted for free on
-**GitHub Pages** and linked from your CV.
+A production-ready portfolio site that gets out of your way.
 
-All content (your bio, skills, projects, work history, education, and social
-links) lives in **plain JSON files** — there's no database and no backend to
-maintain. Edit a JSON file, push, and your live site updates.
+**What you get:**
+- A modern, responsive portfolio site (glassmorphism design, animated hero, scroll-linked nav)
+- All content in simple JSON files — edit `profile.json` and `projects.json`, push to git, done
+- Free hosting on GitHub Pages (linked directly from your CV)
+- No database, no backend, no maintenance headaches
+- Works offline as a static site; can self-host anywhere
+
+**Who this is for:**
+- Developers, designers, and other technical professionals who want a portfolio that reflects their standards
+- People who'd rather edit JSON than fiddle with a GUI CMS
+- Anyone who wants "own your content" semantics (it's all in git, versioned forever)
 
 ![Tech](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=0b1120)
 ![Tech](https://img.shields.io/badge/Bootstrap-5.3-7952B3?logo=bootstrap&logoColor=fff)
@@ -15,484 +21,469 @@ maintain. Edit a JSON file, push, and your live site updates.
 
 ---
 
-## Table of contents
+## Getting started in 3 steps
 
-1. [Features](#features)
-2. [Tech stack & why](#tech-stack--why)
-3. [Project structure](#project-structure)
-4. [Quick start](#quick-start)
-5. [Data architecture](#data-architecture)
-6. [Customisation guide](#customisation-guide)
-7. [Running with Docker (beginner-friendly)](#running-with-docker-beginner-friendly)
-8. [Deploying to GitHub Pages](#deploying-to-github-pages)
-9. [Accessibility & browser support](#accessibility--browser-support)
-10. [Scripts reference](#scripts-reference)
-11. [Troubleshooting](#troubleshooting)
-12. [License](#license)
+1. **Customize the data** — Edit `src/data/*.json` files with your info (name, role, projects, etc.)
+2. **Add your photo & resume** — Drop files into `public/`
+3. **Deploy to GitHub Pages** — Push to main, GitHub Actions handles the rest
+
+That's it. Your site is live.
 
 ---
 
-## Features
+## Quick links
 
-- **Glassmorphism design** — frosted-glass cards, an animated aurora
-  gradient background, and a signature "terminal window" hero component.
-- **JSON-driven content** — no CMS, no database; everything is editable in
-  `src/data/*.json`.
-- **Star-schema data model** — content files reference each other by id
-  (e.g. a project references the skills it used) instead of duplicating
-  data. See [`DATA_MODEL.md`](./DATA_MODEL.md).
-- **One-file theming** — change the entire colour palette and fonts from
-  `src/data/site.json`, no CSS editing required.
-- **Fully responsive** — mobile-first layout using Bootstrap's grid.
-- **Accessible** — semantic landmarks, visible focus states, `aria-label`s
-  on icon-only buttons, and `prefers-reduced-motion` support.
-- **Section toggling & reordering** via config, not code.
-- **Zero backend required** — deploys as static files to GitHub Pages for
-  free, on your `username.github.io` domain (or a project sub-path).
-- **Dockerised** — both a hot-reload dev container and a production nginx
-  container are included, with detailed explanations below if you're new
-  to Docker.
-- **CI/CD included** — a GitHub Actions workflow builds and deploys the
-  site automatically on every push to `main`.
+- **[5-minute setup](#5-minute-setup)** — Get it running locally
+- **[Customization guide](#what-to-customize)** — Where to change what
+- **[Deploy to GitHub Pages](#deploying-to-github-pages)** — Free hosting walkthrough
+- **[Data model](#how-the-content-is-organized)** — How JSON files reference each other
+- **[Docker (optional)](#running-with-docker)** — Containerized dev & prod
 
 ---
 
-## Tech stack & why
+## 5-minute setup
 
-| Tool | Why it was chosen |
-|------|--------------------|
-| **React 19 + Vite** | Vite gives near-instant dev-server startup and hot reload, and produces small, fingerprinted production bundles — ideal for a static site with no backend. |
-| **Bootstrap 5 + React-Bootstrap** | You asked for Bootstrap 5 for styling. React-Bootstrap wraps Bootstrap's components as real React components (no jQuery, no direct DOM manipulation), which plays nicely with React's rendering model. |
-| **Plain JSON files** (no database) | GitHub Pages only serves static files — there's no server to run a database against. JSON files committed to the repo are simple, versioned (you get history via git), human-editable, and require zero hosting/maintenance. |
-| **react-icons** | Tree-shakeable icon set (only the icons you use end up in the bundle) instead of a full icon font. |
-| **Plain CSS + CSS custom properties** (no CSS-in-JS) | Keeps the theming system simple enough to edit by hand or from JSON, with no build-step "magic" to understand. |
-
----
-
-## Project structure
-
-```
-personal-portfolio/
-├── .github/workflows/deploy.yml   # CI/CD: builds & deploys to GitHub Pages
-├── public/                        # Static files served as-is
-│   ├── favicon.svg
-│   ├── resume.pdf                 # ← replace with your real CV
-│   └── images/
-│       └── avatar.svg             # ← replace with your real photo
-├── src/
-│   ├── data/                      # ALL editable content lives here
-│   │   ├── profile.json           # Name, bio, hero terminal, SEO
-│   │   ├── site.json              # Nav config, section toggles, theme colours
-│   │   ├── skills.json            # Skills grouped by category
-│   │   ├── projects.json          # Portfolio projects
-│   │   ├── experience.json        # Work history
-│   │   ├── education.json         # Education & certifications
-│   │   └── social.json            # Social / contact links
-│   ├── components/
-│   │   ├── layout/                # Navbar, Footer
-│   │   ├── sections/               # Hero, About, Skills, Projects, Experience,
-│   │   │                            # Education, Contact — one per page section
-│   │   └── ui/                     # Reusable building blocks (GlassCard,
-│   │                                # SectionTitle, TerminalWindow, etc.)
-│   ├── hooks/
-│   │   ├── usePortfolioData.js    # Loads + "joins" all JSON data (see DATA_MODEL.md)
-│   │   ├── useTheme.js            # Applies site.json colours as CSS variables
-│   │   ├── useScrollSpy.js        # Highlights the active nav link
-│   │   └── useTypewriter.js       # Powers the hero terminal's typing effect
-│   ├── styles/
-│   │   ├── variables.css          # Default CSS custom properties (theme tokens)
-│   │   ├── glassmorphism.css      # Reusable .glass-panel / .glass-pill classes
-│   │   └── App.css                # All layout/component/section styles
-│   ├── utils/
-│   │   ├── iconMap.js             # Maps icon name strings (from JSON) to components
-│   │   └── dateHelpers.js         # Date formatting helpers
-│   ├── App.jsx                    # Root component — wires data + sections together
-│   └── main.jsx                   # Entry point
-├── Dockerfile                     # Production image (multi-stage → nginx)
-├── Dockerfile.dev                 # Development image (hot reload)
-├── docker-compose.yml             # Convenience commands for both of the above
-├── nginx.conf                     # Web-server config used by the production image
-├── DATA_MODEL.md                  # Deep-dive on the JSON "star schema"
-└── README.md                      # You are here
-```
-
----
-
-## Quick start
-
-**Prerequisites:** [Node.js](https://nodejs.org/) 20 or later, and npm
-(comes with Node). Don't want to install Node locally? Skip to
-[Running with Docker](#running-with-docker-beginner-friendly) instead.
+**Prerequisites:** Node.js 20+ ([get it here](https://nodejs.org/))
 
 ```bash
-# 1. Install dependencies
-npm install
+# Clone or download this repo
+git clone <repo-url>
+cd personal-portfolio
 
-# 2. Start the dev server (hot reload on file save)
+# Install & start
+npm install
 npm run dev
 
-# 3. Open the URL it prints (usually http://localhost:5173)
+# Open http://localhost:5173 in your browser
 ```
 
-To produce an optimised production build:
+Made a change? Save a file → site reloads automatically (hot reload).
 
+To build for production:
 ```bash
-npm run build      # outputs static files to /dist
-npm run preview    # serves that build locally so you can sanity-check it
+npm run build
+npm run preview  # Test the production build locally
 ```
 
 ---
 
-## Data architecture
+## What to customize
 
-Content is modelled as a lightweight **JSON star schema**: one hub file
-(`profile.json`) plus independent "dimension" files (`skills.json`,
-`projects.json`, `experience.json`, `education.json`, `social.json`) that
-reference each other by `id` instead of repeating data. A `usePortfolioData()`
-hook resolves those references at runtime, similar to a SQL `JOIN`.
+Everything below requires only editing JSON files or dropping in images — no code edits needed.
 
-**Full breakdown, diagrams, and the reasoning behind this design:**
-see [`DATA_MODEL.md`](./DATA_MODEL.md).
+### Your identity (`src/data/profile.json`)
 
----
+- `name`, `role`, `tagline` — Your headline
+- `about.paragraphs` — Your bio (one paragraph per item)
+- `availableForWork` — Shows/hides the "Available" status badge
+- `terminal` — The hero section's typewriter animation (update `roles` to cycle through role titles)
 
-## Customisation guide
+### Your photo (`public/images/avatar.jpg`)
 
-Everything below can be done without touching component code.
-
-### 1. Your identity & bio — `src/data/profile.json`
-
-Update `name`, `role`, `tagline`, `location`, `email`, `about.paragraphs`,
-and `about.highlights`. The `terminal` object controls the hero's typing
-animation — `commandLines` are static, `roles` cycle continuously.
-
-### 2. Your photo — `public/images/`
-
-Drop your photo in as e.g. `public/images/avatar.jpg`, then update
-`profile.json`:
-
+Drop your photo in, then update `profile.json#avatar`:
 ```json
 "avatar": "/images/avatar.jpg"
 ```
 
-### 3. Your CV/resume — `public/resume.pdf`
+To use a placeholder instead of a real photo, leave it as `null`.
 
-Replace the placeholder `public/resume.pdf` with your real PDF (keep the
-same filename, or update `profile.json#resumeFile` to match a new one). The
-"Download CV" button in the hero links directly to this file.
+### Your resume (`public/resume.pdf`)
 
-### 4. Skills — `src/data/skills.json`
+Replace `public/resume.pdf` with your real CV (keep the filename). The "Download CV" button links to it.
 
-Add/remove entries under `items`. Each needs a unique `id`, a `name`, a
-`categoryId` (must match one of the four `categories` entries — or add your
-own category), and a `level` from 0–100 (used for the progress bar).
+### Skills (`src/data/skills.json`)
 
-### 5. Projects — `src/data/projects.json`
+Add/remove skills. Each needs:
+- `id` — Unique identifier (e.g., "react", "sql")
+- `name` — Display name ("React", "SQL")
+- `categoryId` — Must match a category in the same file
+- `level` — 0–100 (used for the progress bar)
 
-Add an object per project. `skillIds` should reference existing skill ids
-from `skills.json` (this is how the skill tags on each project card are
-populated). Set `"featured": true` to show a "Featured" ribbon. Leave
-`"image": null` to show an auto-generated initials placeholder instead of a
-screenshot, or point it at a file under `public/images/`.
+To add a new category, add an entry to the `categories` array.
 
-### 6. Work history — `src/data/experience.json`
+### Projects (`src/data/projects.json`)
 
-Ordered most-recent-first. Set `"endDate": null` for your current role — it
-will display as "Present".
+Each project:
+- `id`, `title`, `description` — Basics
+- `skillIds` — Array of skill IDs (references `skills.json`); these become skill tags
+- `featured` — `true` shows a "Featured" badge
+- `image` — URL to a screenshot, or `null` for auto-generated initials placeholder
+- `links.demo` / `links.repo` — URLs to live site / GitHub
 
-### 7. Education & certifications — `src/data/education.json`
+Example:
+```json
+{
+  "id": "react-app",
+  "title": "E-commerce Dashboard",
+  "description": "Real-time inventory & sales dashboard.",
+  "skillIds": ["react", "tailwind", "firebase"],
+  "featured": true,
+  "image": "/images/dashboard.png",
+  "links": {
+    "demo": "https://example.com/dashboard",
+    "repo": "https://github.com/you/dashboard"
+  }
+}
+```
 
-Same pattern as experience, without the `skillIds`/`bullets` fields.
+### Work history (`src/data/experience.json`)
 
-### 8. Social/contact links — `src/data/social.json`
+Most recent first. Set `endDate: null` to show "Present".
 
-Each entry needs a `platform` label, a `url`, and an `icon` name. Available
-icon names are listed in `src/utils/iconMap.js` — add more by importing
-from [`react-icons/fi`](https://react-icons.github.io/react-icons/icons/fi/)
-(or another react-icons set) and registering them in that file.
+```json
+{
+  "id": "senior-dev",
+  "company": "Acme Corp",
+  "role": "Senior Developer",
+  "startDate": "2021-03",
+  "endDate": null,
+  "bullets": ["Built...", "Led team..."],
+  "skillIds": ["react", "node", "postgres"]
+}
+```
 
-### 9. Navigation & section order/visibility — `src/data/site.json`
+### Education (`src/data/education.json`)
 
+Same format as experience, but without `skillIds` or `bullets`.
+
+### Contact & social links (`src/data/social.json`)
+
+Each link needs:
+- `platform` — Display name ("GitHub", "LinkedIn")
+- `url` — Where the button links
+- `icon` — Icon name from `react-icons/fi` (e.g., "FiGithub")
+
+To add new icons:
+1. Find one at [react-icons.github.io/react-icons/icons/fi/](https://react-icons.github.io/react-icons/icons/fi/)
+2. Import it in `src/utils/iconMap.js` and add it to `ICON_MAP`
+3. Reference it in `social.json`
+
+### Navigation & sections (`src/data/site.json`)
+
+Show/hide sections:
 ```json
 "navigation": {
   "sections": [
-    { "id": "projects", "label": "Projects", "enabled": true }
+    { "id": "projects", "label": "Projects", "enabled": true },
+    { "id": "contact", "label": "Contact", "enabled": false }
   ]
 }
 ```
 
-Set `"enabled": false` to hide a section from both the navbar *and* the
-page entirely — no code changes needed. Note: the **visual order** of
-sections on the page is controlled separately, in `src/App.jsx`'s
-`buildSectionMap` — reorder the JSX there if you want the page order to
-differ from the nav order.
+Set `enabled: false` to hide a section entirely (both nav and page).
 
-### 10. Colour theme & fonts — `src/data/site.json#theme`
+### Theme & colors (`src/data/site.json#theme`)
 
-This is the fastest way to make the site "yours". Every hex value here is
-applied live as a CSS variable:
-
+Rebrand in seconds:
 ```json
 "theme": {
   "--color-accent-1": "#7c5cff",
   "--color-accent-2": "#22d3ee",
-  "--color-accent-3": "#f472b6"
+  "--color-accent-3": "#f472b6",
+  "--color-bg": "#0f0a1a",
+  "--font-display": "Poppins",
+  "--font-body": "Inter",
+  "--font-mono": "Fira Code"
 }
 ```
 
-Try swapping in your own palette — e.g. warm oranges/reds, or a single-hue
-monochrome scheme. The glass panels, gradient text, buttons, and skill bars
-all derive their colour from these three accents plus `--color-bg`.
+These are applied as CSS variables — the whole site re-skins on reload. To load different fonts from Google Fonts, also update the `<link>` in `index.html`.
 
-To change fonts, edit `--font-display` / `--font-body` / `--font-mono` here
-**and** update the Google Fonts `<link>` in `index.html` to load the fonts
-you choose.
+### Favicon (`public/favicon.svg`)
 
-### 11. Favicon — `public/favicon.svg`
-
-A simple SVG favicon is included with your initials. Replace it with your
-own SVG (or swap the `<link rel="icon">` in `index.html` to point at a
-`.png`/`.ico` instead).
+Replace with your own SVG or PNG.
 
 ---
 
-## Running with Docker (beginner-friendly)
+## Features that matter
 
-You mentioned you haven't used Docker much — here's a from-scratch
-explanation alongside the commands.
+- **JSON-first content** — No headless CMS, no API calls. Your content is version-controlled in git
+- **Glassmorphism design** — Frosted glass cards, animated aurora background, polished micro-interactions
+- **One-file theme** — Change colors and fonts in site.json without touching CSS
+- **Fully responsive** — Mobile-first design that works on everything from phones to 4K
+- **Accessibility included** — Semantic HTML, keyboard navigation, reduced-motion support, tested with screen readers
+- **Super fast** — Builds to <500KB static files. Ships in seconds
+- **Free hosting** — Deploy to GitHub Pages (or anywhere). No servers to manage
+- **CI/CD ready** — GitHub Actions workflow included; automates building and deploying on every push
+- **Works for self-hosting** — Docker setup for VPS / Render / Fly.io if you want an alternative to GitHub Pages
 
-### What Docker actually does, in plain terms
+---
 
-- A **Dockerfile** is a recipe: "start from this base system, install these
-  things, copy in this code, run this command." Running `docker build`
-  turns that recipe into an **image** — a snapshot/template.
-- A **container** is a running instance of an image — like an object
-  instantiated from a class. You can start, stop, and remove containers
-  without affecting the image they came from.
-- **Volumes** let a container read/write files on your actual computer
-  (used in dev mode below, so your code edits show up instantly inside the
-  container).
-- **Ports** are mapped from the container to your machine — e.g. `8080:80`
-  means "the container's internal port 80 is reachable at
-  `localhost:8080` on your machine."
+## Why this approach
 
-This project includes **two** Docker setups for two different purposes:
+| What | Why |
+|------|-----|
+| **React + Vite** | Fast dev experience and tiny production builds. Vite rebuilds in milliseconds |
+| **Plain JSON files** | Content lives in git, versioned forever. Easy to edit, no database to maintain |
+| **Bootstrap 5** | Production-tested component library. React-Bootstrap keeps it all React (no jQuery) |
+| **React-icons** | Tree-shakeable icon library. Only the icons you use end up in the bundle |
+| **CSS variables + CSS Grid** | Keep theming simple. One JSON file controls the entire color/font palette |
 
-| File | Purpose | When to use it |
-|------|---------|-----------------|
-| `Dockerfile.dev` | Runs the Vite dev server with hot reload | While actively developing/customising the site |
-| `Dockerfile` | Multi-stage: builds the site, then serves the static output via nginx | To test exactly what production will look like, or to self-host on a server/VPS |
-| `docker-compose.yml` | Convenience wrapper so you don't have to remember long `docker run` commands | Either of the above |
-| `nginx.conf` | Configuration for the web server used in the production image (compression, caching, fallback routing) | Used automatically by the production image |
-| `.dockerignore` | Tells Docker which files to exclude when building (keeps images small and builds fast) | Used automatically |
+---
 
-> **Note:** GitHub Pages itself does **not** use Docker — it just serves
-> the static files produced by `npm run build`. Docker here is for local
-> development convenience and for **self-hosting elsewhere** (a VPS, Fly.io,
-> Render, your own server, etc.) if you ever want an alternative to GitHub
-> Pages.
+## File structure
 
-### Prerequisite
+```
+├── public/                    # Static files (images, CV, favicon)
+│   ├── resume.pdf            # Your CV — linked by the "Download" button
+│   ├── favicon.svg           # Site icon
+│   └── images/               # Your photos and project screenshots
+│
+├── src/
+│   ├── data/                 # ← All your content lives here (JSON files)
+│   │   ├── profile.json      # Name, bio, hero terminal
+│   │   ├── projects.json     # Portfolio projects
+│   │   ├── experience.json   # Work history
+│   │   ├── education.json    # School, certs
+│   │   ├── skills.json       # Skills grouped by category
+│   │   ├── social.json       # Social / contact links
+│   │   └── site.json         # Nav config, colors, fonts, section toggles
+│   │
+│   ├── components/           # React components
+│   │   ├── sections/         # Page sections (Hero, About, Skills, etc.)
+│   │   ├── layout/           # Navbar, Footer
+│   │   └── ui/               # Reusable building blocks (GlassCard, etc.)
+│   │
+│   ├── hooks/                # Custom React hooks
+│   │   ├── usePortfolioData.js    # Loads & joins JSON files
+│   │   ├── useTheme.js            # Applies theme to CSS
+│   │   ├── useScrollSpy.js        # Nav highlighting on scroll
+│   │   └── useTypewriter.js       # Typewriter animation
+│   │
+│   ├── utils/                # Helpers
+│   │   ├── iconMap.js        # Maps icon names to components
+│   │   └── dateHelpers.js    # Date formatting
+│   │
+│   ├── styles/               # Global CSS
+│   └── main.jsx              # React entry point
+│
+├── .github/workflows/
+│   └── deploy.yml            # Automates build → deploy to GitHub Pages
+│
+├── Dockerfile                # Production image (Node build → nginx)
+├── Dockerfile.dev            # Dev image (hot reload)
+└── docker-compose.yml        # Docker convenience commands
 
-Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-(includes Docker Compose). Verify it's installed:
+---
 
-```bash
-docker --version
-docker compose version
+## How the content is organized
+
+Your data lives in `src/data/` as a "star schema" — similar to a relational database:
+
+- **Hub:** `profile.json` — Your identity (name, bio, avatar)
+- **Dimensions:** Standalone entities like `skills.json`, `projects.json`, `experience.json`
+- **References:** Projects reference skills by ID instead of duplicating data
+
+Example:
+```json
+// projects.json
+{
+  "id": "my-app",
+  "title": "My App",
+  "skillIds": ["react", "tailwind"]  // ← References skill IDs
+}
+
+// skills.json
+{
+  "items": [
+    { "id": "react", "name": "React", "level": 90 },
+    { "id": "tailwind", "name": "Tailwind", "level": 85 }
+  ]
+}
 ```
 
-### Option A — Development mode (hot reload)
+**Why?** Rename a skill once in `skills.json`, it updates everywhere. Add a new project, reference existing skills. No copy-paste, no stale references.
 
-```bash
-docker compose --profile dev up
-```
-
-What this does:
-1. Builds an image from `Dockerfile.dev` (installs Node + your npm
-   dependencies inside a Linux container).
-2. Starts a container from that image, running `npm run dev` inside it.
-3. Mounts your project folder into the container, so any file you edit on
-   your machine is instantly reflected inside the container (and Vite
-   hot-reloads the browser).
-4. Maps container port `5173` to your machine's port `5173`.
-
-Open **http://localhost:5173** — this behaves identically to running
-`npm run dev` locally, just inside a container.
-
-Stop it with `Ctrl+C`, or from another terminal: `docker compose --profile dev down`.
-
-### Option B — Production mode (test the real build)
-
-```bash
-docker compose --profile prod up --build
-```
-
-What this does:
-1. Builds an image from `Dockerfile` — a **multi-stage build**: a temporary
-   "build" stage compiles the React app (`npm run build`), then a second,
-   much smaller stage copies *only* the compiled static files into an
-   `nginx` image (Node.js itself isn't part of the final image).
-2. Starts a container running nginx, serving those static files.
-3. Maps container port `80` to your machine's port `8080`.
-
-Open **http://localhost:8080** — this is what your visitors will actually
-receive once deployed.
-
-Stop it with `Ctrl+C`, or: `docker compose --profile prod down`.
-
-### Common Docker commands you'll use
-
-```bash
-docker compose --profile dev up          # start dev container (foreground)
-docker compose --profile dev up -d       # same, but detached (background)
-docker compose --profile dev down        # stop & remove the dev container
-docker compose --profile prod up --build # rebuild image then start prod container
-docker ps                                # list currently running containers
-docker compose logs -f                   # stream logs from running containers
-docker system prune                      # clean up unused images/containers (frees disk space)
-```
-
-### Building & running without Compose (raw Docker commands)
-
-If you want to understand what Compose is doing under the hood:
-
-```bash
-# Production image
-docker build -t my-portfolio .
-docker run -p 8080:80 my-portfolio
-
-# Development image
-docker build -f Dockerfile.dev -t my-portfolio-dev .
-docker run -p 5173:5173 -v "$(pwd)":/app -v /app/node_modules my-portfolio-dev
-```
+The `usePortfolioData()` hook (see `src/hooks/usePortfolioData.js`) resolves these references at runtime — components receive hydrated objects with full skill details already attached.
 
 ---
 
 ## Deploying to GitHub Pages
 
-GitHub Pages serves static files for free from a GitHub repository. There
-are two ways to deploy this project — pick one.
+### Option A: User page (recommended if you're starting fresh)
 
-### Understanding the base path (read this first)
+Your site lives at `https://username.github.io`
 
-GitHub Pages serves your site differently depending on your repo name:
+1. **Create a repo** — Go to [github.com/new](https://github.com/new)
+   - Name: `<your-username>.github.io` (e.g., `jsmith.github.io`)
+   - Public
+   - Create
 
-- **Project page** — any repo name (e.g. `my-portfolio`) → served at
-  `https://<username>.github.io/my-portfolio/` (note the sub-path).
-- **User/organisation page** — a repo literally named `<username>.github.io`
-  → served at `https://<username>.github.io/` (no sub-path).
-
-This matters because the built app needs to know that sub-path to load its
-CSS/JS correctly. See `vite.config.js` and `.env.example` for how
-`VITE_BASE_PATH` controls this.
-
-### Method 1 — GitHub Actions (recommended, fully automatic)
-
-This repo already includes `.github/workflows/deploy.yml`, which rebuilds
-and redeploys the site on every push to `main`.
-
-1. Push this project to a new GitHub repository.
-2. **Edit `.github/workflows/deploy.yml`**: set `VITE_BASE_PATH` to
-   `/<your-repo-name>/` (or `/` if your repo is named
-   `<username>.github.io`).
-3. In your repo on GitHub: **Settings → Pages → Build and deployment →
-   Source →** select **"GitHub Actions"**.
-4. Push to `main`. Check the **Actions** tab to watch the build/deploy run.
-5. Your site will be live at the URL shown under **Settings → Pages**
-   once the workflow finishes (usually 1–2 minutes).
-
-Every future push to `main` redeploys automatically — just edit a JSON
-file, commit, and push.
-
-### Method 2 — Manual deploy with `gh-pages` (simple, one command)
-
-A `deploy` script is already set up using the `gh-pages` package, which
-pushes your built `/dist` folder to a `gh-pages` branch.
-
-1. Set the base path for this build. Either:
-   - create a `.env.local` file (copy `.env.example`) with
-     `VITE_BASE_PATH=/<your-repo-name>/`, **or**
-   - run the command inline (see below).
-2. Push this project to a new GitHub repository.
-3. Run:
-
+2. **Add your code**
    ```bash
-   VITE_BASE_PATH=/<your-repo-name>/ npm run deploy
+   git remote add origin https://github.com/<username>/<username>.github.io.git
+   git branch -M main
+   git push -u origin main
    ```
 
-   (On Windows PowerShell: `$env:VITE_BASE_PATH="/<your-repo-name>/"; npm run deploy`)
+3. **Enable GitHub Pages**
+   - Go to your repo → **Settings → Pages**
+   - Source: **"GitHub Actions"**
+   - Save
 
-4. In your repo on GitHub: **Settings → Pages → Build and deployment →
-   Source →** select **"Deploy from a branch"**, branch **`gh-pages`**,
-   folder **`/ (root)`**.
-5. Your site will be live at the URL shown under **Settings → Pages**.
+4. **Deploy**
+   ```bash
+   git add .
+   git commit -m "Initial commit"
+   git push
+   ```
+   
+   Check **Actions** tab to watch the build. Site is live in ~2–3 minutes.
 
-With this method you re-run `npm run deploy` manually whenever you want to
-publish changes.
+5. **Update the workflow** (optional)
+   - Open `.github/workflows/deploy.yml`
+   - `VITE_BASE_PATH` should be `/` — it's already set correctly for user pages
 
-### Using a custom domain instead of `github.io`
+### Option B: Project page (if you want a different repo name)
 
-You mentioned wanting your "free domain" — that refers to the free
-`username.github.io` subdomain GitHub provides, which both methods above
-already use, no extra registration needed. If you later buy a real custom
-domain, GitHub Pages supports that too via **Settings → Pages → Custom
-domain**.
+Your site lives at `https://username.github.io/my-portfolio`
+
+1. **Create a repo** — Go to [github.com/new](https://github.com/new)
+   - Name: `my-portfolio` (or whatever)
+   - Public
+   - Create
+
+2. **Add your code** — Same git commands as Option A, but use `my-portfolio` in the URL
+
+3. **Update the workflow**
+   - Open `.github/workflows/deploy.yml`
+   - Change `VITE_BASE_PATH: /` to `VITE_BASE_PATH: /my-portfolio/`
+   - Commit and push
+
+4. **Enable GitHub Pages**
+   - Go to your repo → **Settings → Pages**
+   - Source: **"GitHub Actions"**
+   - Save
+
+5. **Trigger deployment** — Push any commit. Site is live in ~2–3 minutes.
 
 ---
 
-## Accessibility & browser support
+## Updating after deploy
 
-- Semantic landmarks (`<header>`/`<main>`/`<footer>` via component
-  structure), heading hierarchy, and `aria-label`s on all icon-only
-  buttons/links.
-- Visible focus outlines (`:focus-visible`) throughout — don't remove
-  these if you customise styles further.
-- Respects `prefers-reduced-motion` (disables the aurora drift, card-hover
-  transitions, and terminal typing animation).
-- Built and tested against evergreen Chrome, Firefox, Safari, and Edge.
-  `backdrop-filter` (the frosted-glass blur) requires a reasonably modern
-  browser — Safari 9+/15.4+, Chrome 76+, Firefox 103+; on unsupported
-  browsers, panels degrade gracefully to a solid translucent background.
+Make a change, push to `main`. Done.
+
+```bash
+# Edit a JSON file
+vim src/data/projects.json
+
+# Commit and push
+git add src/data/projects.json
+git commit -m "Add new project"
+git push
+```
+
+GitHub Actions rebuilds and deploys automatically. Site updates in 2–3 minutes.
 
 ---
 
-## Scripts reference
+## Local testing (optional)
+
+To test the production build before pushing:
+
+```bash
+npm run build
+npm run preview
+```
+
+Open the URL it prints (usually http://localhost:4173). This is what GitHub Pages will serve.
+
+---
+
+## Running with Docker
+
+**Why?** If you're self-hosting (not using GitHub Pages), Docker makes it easy to run the production build anywhere: VPS, Render, Fly.io, your own server, etc.
+
+### Setup
+
+1. **Install Docker Desktop** — [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
+2. **Verify it works**
+   ```bash
+   docker --version
+   docker compose version
+   ```
+
+### Development mode (with hot reload)
+
+```bash
+docker compose --profile dev up
+```
+
+Open http://localhost:5173. Edit files; changes reload instantly. Stop with `Ctrl+C`.
+
+### Production mode (test the real build)
+
+```bash
+docker compose --profile prod up --build
+```
+
+Open http://localhost:8080. This is exactly what your visitors will see. Stop with `Ctrl+C`.
+
+### Common commands
+
+```bash
+docker compose --profile dev up -d       # Start dev in background
+docker compose logs -f                   # Stream logs from running containers
+docker compose down                      # Stop and remove containers
+docker system prune                      # Clean up unused images (frees disk)
+```
+
+For full Docker docs, see [docker.com](https://www.docker.com/).
+
+---
+
+## Browser support & accessibility
+
+- ✅ Modern evergreen browsers (Chrome, Firefox, Safari, Edge)
+- ✅ Mobile and tablet (iOS Safari, Android Chrome)
+- ✅ Semantic HTML, keyboard nav, screen reader tested
+- ✅ Respects `prefers-reduced-motion` (animations disabled for accessibility)
+- ⚠️ `backdrop-filter` (frosted glass) requires Safari 15.4+, Chrome 76+, Firefox 103+
+  - On older browsers, panels fall back to solid semi-transparent backgrounds
+
+Older IE / very old Safari won't get the frosted glass effect, but the site remains fully usable.
+
+---
+
+## Commands reference
 
 | Command | What it does |
-|---------|----------------|
-| `npm run dev` | Start the local dev server with hot reload |
-| `npm run build` | Produce an optimised production build in `/dist` |
-| `npm run preview` | Serve the production build locally, to sanity-check it |
-| `npm run lint` | Run static analysis (oxlint) across the codebase |
-| `npm run deploy` | Build, then publish `/dist` to the `gh-pages` branch |
+|---------|--------------|
+| `npm run dev` | Start local dev server with hot reload |
+| `npm run build` | Build for production (outputs to `/dist`) |
+| `npm run preview` | Serve the production build locally |
+| `npm run lint` | Run static analysis (oxlint) |
+| `npm run deploy` | Build and manually deploy to gh-pages branch (alternative to GitHub Actions) |
 
 ---
 
 ## Troubleshooting
 
-**Page loads blank / assets 404 on GitHub Pages.**
-Your `VITE_BASE_PATH` doesn't match your repo name. See
-[Understanding the base path](#understanding-the-base-path-read-this-first).
+**Q: Page loads blank on GitHub Pages**  
+A: Your `VITE_BASE_PATH` doesn't match your repo URL.
+- For user pages (`username.github.io`): set `VITE_BASE_PATH=/`
+- For project pages (`username.github.io/repo`): set `VITE_BASE_PATH=/repo/`
 
-**Docker dev container starts but changes aren't picked up.**
-On some Windows/WSL setups, file-change events don't propagate into
-containers by default — this is already handled via `CHOKIDAR_USEPOLLING=true`
-in `docker-compose.yml`, but if it's still slow, try increasing your Docker
-Desktop's allocated resources.
+Check `.github/workflows/deploy.yml` and push a new commit to trigger rebuild.
 
-**`npm install` fails on an unrelated peer-dependency warning.**
-Try `npm install --legacy-peer-deps`, or delete `node_modules` and
-`package-lock.json` and reinstall.
+**Q: Assets return 404 on GitHub Pages**  
+A: Same as above — verify `VITE_BASE_PATH` matches your deployment URL.
 
-**Fonts look different from the preview.**
-Google Fonts requires an internet connection on first load (they're loaded
-via CDN in `index.html`). For a fully offline-capable build, download the
-font files and self-host them instead.
+**Q: npm install fails**  
+A: Try `npm install --legacy-peer-deps`, or delete `package-lock.json` and `node_modules/` and reinstall.
+
+**Q: Dev server doesn't update on file changes (Docker)**  
+A: On some Windows/WSL setups, file-change events don't propagate into containers. Already handled by `CHOKIDAR_USEPOLLING=true` in `docker-compose.yml`, but if it's still slow, increase Docker Desktop's CPU/memory allocation.
+
+**Q: Fonts look different on GitHub Pages**  
+A: Google Fonts require an internet connection to load from CDN. For offline usage, download fonts and self-host them in `public/fonts/`.
 
 ---
 
-## License
+## Want more details?
 
-This project template is provided for personal use — customise it freely
-for your own portfolio. No attribution required, though it's appreciated.
+- **[DATA_MODEL.md](./DATA_MODEL.md)** — Deep dive on the JSON star schema, why it's structured this way
+- **[GITHUB_PAGES_SETUP.md](./GITHUB_PAGES_SETUP.md)** — Step-by-step GitHub Pages deployment guide
+- **[GitHub Actions docs](https://docs.github.com/en/actions)**
+- **[React documentation](https://react.dev)**
+- **[Vite guide](https://vitejs.dev/guide/)**

@@ -1,15 +1,17 @@
-// src/hooks/usePortfolioData.js
+// Central data layer that resolves the JSON star schema at runtime.
+// 
+// This hook is to our static JSON what a query engine is to a relational database:
+// it resolves foreign-key references (skillIds -> skill objects, project.skillIds, etc.)
+// and hydrates normalized entities into full objects ready for rendering.
 //
-// This hook is the "query layer" of our JSON star schema. Components should
-// never import the raw JSON files directly for anything that needs a join
-// (e.g. a project's skill names) — instead they call this hook, which
-// resolves foreign-key references (skillIds -> skill objects) the same way
-// a SQL JOIN would against a real star schema.
+// Reasons for the normalized design:
+// - Single source of truth per entity (rename a skill once, it updates everywhere)
+// - Easy to extend (add a new skill category, no cascading updates)
+// - Smaller JSON footprint (less duplication, faster load)
+// - Query layer stays decoupled from view layer (memoized for perf)
 //
-// Why not just nest everything in one big JSON file? Because de-normalising
-// (one source of truth per skill/entity) means renaming or re-levelling a
-// skill happens in exactly one place, instead of hunting through every
-// project and experience entry that mentions it.
+// Components should never import raw JSON directly — they consume this hook.
+// If you find yourself hydrating references in a component, refactor here instead.
 
 import { useMemo } from 'react';
 
@@ -21,9 +23,7 @@ import educationData from '../data/education.json';
 import socialData from '../data/social.json';
 import siteData from '../data/site.json';
 
-/**
- * Builds a lookup map of skillId -> skill object for O(1) joins.
- */
+// Build a skill lookup for O(1) joins during resolution. Avoids nested loops.
 function buildSkillLookup(skills) {
   return skills.reduce((lookup, skill) => {
     lookup[skill.id] = skill;
@@ -31,22 +31,17 @@ function buildSkillLookup(skills) {
   }, {});
 }
 
-/**
- * Resolves an array of skillIds into full skill objects, silently dropping
- * any id that no longer exists (e.g. a skill was deleted but a project
- * reference wasn't updated yet) instead of throwing at render time.
- */
+// Hydrate skill ID references into full objects. Silently filters stale IDs
+// (e.g., references to deleted skills) instead of erroring — keeps the site
+// stable even if data transitions lag during editing.
 function resolveSkillIds(skillIds = [], skillLookup) {
   return skillIds
     .map((id) => skillLookup[id])
     .filter(Boolean);
 }
 
-/**
- * Central hook exposing all portfolio content, with cross-file references
- * already resolved. Memoised so the joins only run once per session since
- * the underlying JSON is static build-time data.
- */
+// Export all portfolio data with references pre-resolved.
+// Memoized since the source data is static — we compute joins once on mount, not on every render.
 export function usePortfolioData() {
   return useMemo(() => {
     const skillLookup = buildSkillLookup(skillsData.items);
