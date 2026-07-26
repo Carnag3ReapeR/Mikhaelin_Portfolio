@@ -3,7 +3,7 @@ name: Build and Deploy Website
 on:
   push:
     branches:
-      - main
+      - master
 
 env:
   VITE_BASE_PATH: /
