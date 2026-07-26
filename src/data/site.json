@@ -1,7 +1,7 @@
 {
   "_comment": "Site-wide configuration. Two things live here: 1) which sections appear and in what order (toggle a section off by setting 'enabled: false' — no code changes needed), and 2) the colour theme, applied at runtime as CSS custom properties (see src/hooks/useTheme.js). Change the hex values below to re-skin the entire site.",
   "navigation": {
-    "brandText": "Mikhaelin",
+    "brandText": "M.R",
     "sections": [
       {
         "id": "home",

@@ -2,7 +2,7 @@
   "_comment": "This is the FACT/HUB file in our star-schema data model. It holds the core identity info that every other data file (skills, projects, experience, education) relates back to. See /DATA_MODEL.md at the project root for the full schema diagram.",
 
   "name": "Mikhaelin Ramsaroop",
-  "initials": "MR",
+  "initials": "M.R",
   "role": "Senior Software Developer | Technical Lead | Data Engineer | Full-Stack Architect",
   "tagline": "Building and architecting full-stack, cloud, and data engineering solutions.",
   "location": "Pinetown, KwaZulu-Natal",

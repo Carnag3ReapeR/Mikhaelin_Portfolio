@@ -25,7 +25,7 @@ function Navbar({ navigation }) {
     >
       <Container className="container-app">
         <BsNavbar.Brand href="#home" onClick={() => setExpanded(false)}>
-          {navigation.brandText}
+          <span className="gradient-text">{navigation.brandText}</span>
         </BsNavbar.Brand>
 
         <BsNavbar.Toggle
