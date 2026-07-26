@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  VITE_BASE_PATH: /
+  VITE_BASE_PATH: /Mikhaelin_Portfolio/
 
 jobs:
   build:
