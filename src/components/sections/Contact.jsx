@@ -25,8 +25,6 @@ function Contact({ profile, social }) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      // Edge case: clipboard API unavailable (older browsers, insecure
-      // context) — fail silently, the mailto link below still works.
     }
   }
 

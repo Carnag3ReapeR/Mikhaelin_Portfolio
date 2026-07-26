@@ -3,20 +3,20 @@
 
   "items": [
     {
-      "id": "edu-cert-fabric",
-      "institution": "Microsoft",
-      "credential": "Fabric Analytics Engineer (DP-600)",
-      "startDate": "Recent",
-      "endDate": "Recent",
-      "description": "Certification for data professionals who design, build, and deploy enterprise-scale data analytics solutions."
-    },
-    {
       "id": "edu-cert-azure",
       "institution": "Microsoft",
-      "credential": "Azure Data Engineer Associate (DP-203)",
-      "startDate": "Recent",
-      "endDate": "Recent",
-      "description": "Certification covering integration, transformation, and consolidation of data from various structured and unstructured data systems into structures that are suitable for building analytics solutions."
+      "credential": "Microsoft Certified: Azure Data Engineer Associate",
+      "startDate": "Certified",
+      "endDate": "Current",
+      "description": "Certification covering integration, transformation, and consolidation of data from various structured and unstructured data systems into structures suitable for analytics solutions."
+    },
+    {
+      "id": "edu-cert-fabric",
+      "institution": "Microsoft",
+      "credential": "Microsoft Certified: Fabric Analytics Engineer",
+      "startDate": "Certified",
+      "endDate": "Current",
+      "description": "Certification for data professionals who design, build, and deploy enterprise-scale data analytics solutions using Microsoft Fabric."
     },
     {
       "id": "edu-degree-bsc",
@@ -32,7 +32,7 @@
       "credential": "Higher Certificate in Information Systems (Software Development)",
       "startDate": "2015",
       "endDate": "2016",
-      "description": "Foundational certification in software development and information systems."
+      "description": "Higher Certificate in Information Systems specializing in Software Development."
     },
     {
       "id": "edu-school",
@@ -40,7 +40,7 @@
       "credential": "Matric",
       "startDate": "2010",
       "endDate": "2014",
-      "description": ""
+      "description": "High school education and Matric qualification."
     }
   ]
 }

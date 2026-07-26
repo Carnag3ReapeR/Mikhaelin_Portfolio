@@ -10,12 +10,19 @@
       "startDate": "2025-01",
       "endDate": null,
       "bullets": [
-        "Provided technical leadership on high-priority initiatives — defining solution architecture, setting development standards, managing technical risk, and mentoring junior developers.",
-        "Architected enterprise-grade Power BI solutions and Microsoft Fabric data pipelines using a thin-layer architecture.",
-        "Engineered robust Python-based automation, including data extraction, web-scraping, and an end-to-end document extraction solution using Azure Document Intelligence.",
-        "Implemented Terraform-based Azure infrastructure and built CI/CD pipelines for reliable deployment."
+        "Provided technical leadership on high-priority initiatives — defining solution architecture, setting development standards, managing technical risk, and mentoring junior developers throughout delivery.",
+        "Architected and delivered enterprise-grade Power BI solutions, applying advanced DAX, M Query, and data modelling practices to drive strategic insights across multiple client engagements.",
+        "Led the design and implementation of Microsoft Fabric data pipelines, overseeing ingestion, transformation, orchestration, and semantic model development using a thin-layer architecture.",
+        "Engineered robust Python-based automation — including data extraction frameworks, complex transformations, and web-scraping solutions — to streamline operational processes.",
+        "Designed and deployed scalable Power Apps, Power Automate, and React/C# applications, establishing standards for modular design, resilience, and end-to-end error handling.",
+        "Implemented Terraform-based Azure infrastructure and built CI/CD pipelines — including linting, error checking, and testing — for reliable, repeatable deployment of both infrastructure and applications.",
+        "Built an end-to-end document extraction solution combining Azure Document Intelligence with React and Python.",
+        "Directed data quality and reconciliation initiatives — covering validations, migration checks, and reconciliation workflows using Alteryx, SQL Server, and Power BI — delivering client-facing outputs that were highly commended.",
+        "Spearheaded an HR analytics platform, including a gamified employee energy dashboard, built on Fabric pipelines with parquet-backed storage for reliable, high-performance analytics.",
+        "Performed in-depth code reviews and documented architecture and process flows to support team standards.",
+        "Led business analysis efforts — shaping project scope, engaging stakeholders, and translating requirements into technical designs — ensuring delivery aligned with business objectives."
       ],
-      "skillIds": ["skill-python", "skill-powerbi", "skill-fabric", "skill-azure", "skill-terraform", "skill-azuredevops"]
+      "skillIds": ["skill-python", "skill-csharp", "skill-powerbi", "skill-fabric", "skill-azure", "skill-terraform", "skill-azuredevops", "skill-solution-arch", "skill-tech-lead", "skill-business-analysis"]
     },
     {
       "id": "exp-tsebo-data",
@@ -28,9 +35,13 @@
         "Built Power BI dashboards using DAX and M Query to support business decision-making.",
         "Created Power Apps and automated workflows with Power Automate.",
         "Designed and managed data pipelines on Azure Synapse, including scheduling and transformation logic.",
-        "Developed Python-based solutions for OCR, sentiment analysis, and web scraping."
+        "Developed Python-based solutions for OCR, sentiment analysis, and web scraping.",
+        "Led business analysis efforts, defining project scope and managing delivery timelines.",
+        "Managed monthly sentiment analysis reviews and generation of AI insights on the feedback received.",
+        "Created Databricks pipelines to automate financial data ETL processes to build niche dashboards for executives.",
+        "Built and Automated a custom end to end solution for a Contracts Register Repository."
       ],
-      "skillIds": ["skill-python", "skill-powerbi", "skill-synapse", "skill-powerplatform", "skill-azure"]
+      "skillIds": ["skill-python", "skill-powerbi", "skill-synapse", "skill-databricks", "skill-powerplatform", "skill-azure", "skill-business-analysis"]
     },
     {
       "id": "exp-ey-junior",
@@ -40,12 +51,16 @@
       "startDate": "2022-04",
       "endDate": "2023-11",
       "bullets": [
-        "Developed and maintained Power BI dashboards using M Query.",
-        "Automated business processes through Power Apps and Power Automate.",
+        "Developed and maintained Power BI dashboards for the business, aiding in generating usage metrics across multiple solutions.",
+        "Automated business processes through Power Apps and Power Automate application and workflow deployments.",
         "Performed Python-based data analysis, including OCR and sentiment analysis.",
-        "Contributed to business analysis documentation (BRD, SDD) and timeline management."
+        "Contributed to business analysis documentation (BRD, SDD) and timeline management.",
+        "Created python applications that assisted with automation and popularization of pdf forms.",
+        "Created python workflow applications that automated end to end processes for niche business requirements and applications.",
+        "Managed SharePoint sites, permissions and other ad-hoc tasks.",
+        "Contributed to team growth and collaboration."
       ],
-      "skillIds": ["skill-python", "skill-powerbi", "skill-powerplatform"]
+      "skillIds": ["skill-python", "skill-powerbi", "skill-powerplatform", "skill-business-analysis"]
     },
     {
       "id": "exp-customapps-junior",
@@ -55,12 +70,16 @@
       "startDate": "2020-04",
       "endDate": "2022-03",
       "bullets": [
-        "Developed web applications using ASP.NET and C#.",
-        "Supported and maintained Android applications built with Kotlin.",
-        "Managed database solutions on Microsoft SQL Server.",
-        "Provided application support and worked on Swagger API controllers."
+        "Developed and maintained web applications using ASP.NET, Blazor and C#.",
+        "Developed and maintained mobile applications using Kotlin and Flutter.",
+        "Managed Solution databases on Microsoft SQL Server, including database migrations and upgrades.",
+        "Created and maintained API’s using Swagger and C#.",
+        "Managed server-based application deployments and web application updates.",
+        "Developed Desktop applications that worked alongside web applications and other systems.",
+        "Integrated Figma designs into mobile applications.",
+        "Managed/Assisted with Mobile application deployment to app stores."
       ],
-      "skillIds": ["skill-csharp", "skill-kotlin", "skill-sql", "skill-visualstudio"]
+      "skillIds": ["skill-csharp", "skill-kotlin", "skill-dart-flutter", "skill-sql", "skill-visualstudio", "skill-postman"]
     },
     {
       "id": "exp-tsebo-intern",
@@ -72,9 +91,11 @@
       "bullets": [
         "Developed and supported custom applications and ETL processes using SSIS.",
         "Managed SharePoint libraries, access control, and Qlik access.",
-        "Assisted in maintaining the company’s data warehouse."
+        "Assisted in maintaining the company’s data warehouse.",
+        "Power Apps & Power Automate Development and support.",
+        "Created business centric tools."
       ],
-      "skillIds": ["skill-sql"]
+      "skillIds": ["skill-sql", "skill-powerplatform"]
     },
     {
       "id": "exp-pczone",

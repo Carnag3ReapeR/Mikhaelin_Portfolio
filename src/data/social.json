@@ -3,6 +3,7 @@
 
   "items": [
     { "id": "soc-email", "platform": "Email", "url": "mailto:ramsaroopm@gmail.com", "icon": "FiMail" },
+    { "id": "soc-phone", "platform": "Phone", "url": "tel:0837849345", "icon": "FiPhone" },
     { "id": "soc-github", "platform": "GitHub", "url": "https://github.com/Carnag3ReapeR", "icon": "FiGithub" },
     { "id": "soc-linkedin", "platform": "LinkedIn", "url": "https://www.linkedin.com/in/mikhaelin-ramsaroop-991242177", "icon": "FiLinkedin" }
   ]

@@ -226,43 +226,211 @@ h1, h2, h3, h4, h5, h6,
   transform: translateY(-3px);
 }
 
-/* ============ 5. Navbar ============ */
+/* ============ 5. Modern Floating Navbar ============ */
 
-.site-navbar {
+.site-navbar-wrapper {
   position: sticky;
   top: 0;
   z-index: 1030;
-  padding: 0.75rem 0;
-  border-radius: 0;
-  border-left: none;
-  border-right: none;
-  border-top: none;
+  width: 100%;
+  padding: 1rem 1rem 0.5rem 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.site-navbar .navbar-brand {
+.site-navbar-wrapper.scrolled {
+  padding-top: 0.5rem;
+  padding-bottom: 0.25rem;
+}
+
+.site-navbar {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0.6rem 1.25rem !important;
+  border-radius: 999px !important;
+  background: rgba(15, 23, 42, 0.65) !important;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(59, 130, 246, 0.1);
+  transition: all 0.3s ease;
+}
+
+.site-navbar-wrapper.scrolled .site-navbar {
+  background: rgba(15, 23, 42, 0.85) !important;
+  box-shadow: 0 12px 35px -8px rgba(0, 0, 0, 0.6), 0 0 20px rgba(236, 72, 153, 0.15);
+  border-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+.nav-brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.brand-emblem {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(59, 130, 246, 0.2));
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 1.25rem;
-  color: var(--color-text);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: -0.5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.nav-brand-wrapper:hover .brand-emblem {
+  transform: scale(1.05) rotate(-3deg);
+  border-color: var(--color-accent-1);
+  box-shadow: 0 0 15px rgba(236, 72, 153, 0.4);
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.15rem 0.55rem;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #4ade80;
+  letter-spacing: 0.3px;
+}
+
+.status-dot-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
 }
 
 .site-navbar .nav-link {
-  font-family: var(--font-mono);
-  font-size: 0.92rem;
-  color: var(--color-text-muted);
-  padding: 0.4rem 0.9rem !important;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-text-muted) !important;
+  padding: 0.45rem 0.95rem !important;
+  margin: 0 0.15rem;
   border-radius: 999px;
-  transition: all var(--transition-base);
+  position: relative;
+  transition: all 0.25s ease;
 }
 
 .site-navbar .nav-link:hover {
-  color: var(--color-text);
+  color: var(--color-text) !important;
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-1px);
 }
 
 .site-navbar .nav-link.active {
-  color: var(--color-bg);
-  background: var(--color-accent-2);
+  color: #ffffff !important;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.85), rgba(59, 130, 246, 0.85)) !important;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.35), 0 0 10px rgba(236, 72, 153, 0.25);
 }
+
+.nav-cta-btn {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--color-accent-2), var(--color-accent-3));
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: 0.75rem;
+}
+
+.nav-cta-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+  color: #ffffff;
+}
+
+/* Custom Animated Mobile Toggle */
+.custom-nav-toggle {
+  background: transparent;
+  border: none;
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1040;
+}
+
+.custom-nav-toggle .bar {
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-text);
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.custom-nav-toggle.open .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.custom-nav-toggle.open .bar:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+.custom-nav-toggle.open .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 991.98px) {
+  .site-navbar-wrapper {
+    padding: 0.75rem 0.75rem 0 0.75rem;
+  }
+  .site-navbar {
+    border-radius: 20px !important;
+  }
+  .site-navbar .navbar-collapse {
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 1.25rem;
+    margin-top: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  }
+  .site-navbar .nav-link {
+    padding: 0.65rem 1rem !important;
+    border-radius: 12px;
+    margin: 0.2rem 0;
+  }
+  .nav-cta-btn {
+    margin-left: 0;
+    margin-top: 0.75rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 
 /* ============ 6. Hero / terminal ============ */
 
@@ -272,6 +440,7 @@ h1, h2, h3, h4, h5, h6,
   align-items: center;
   padding-top: 3rem;
   padding-bottom: 3rem;
+  scroll-margin-top: 90px;
 }
 
 .hero-name {

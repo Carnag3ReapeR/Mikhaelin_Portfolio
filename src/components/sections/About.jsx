@@ -1,6 +1,5 @@
 // src/components/sections/About.jsx
 
-
 import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'react-bootstrap';
 import SectionTitle from '../ui/SectionTitle';

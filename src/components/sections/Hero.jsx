@@ -13,12 +13,6 @@ function Hero({ profile, social }) {
       <Container className="container-app">
         <Row className="align-items-center g-5">
           <Col lg={6}>
-            {profile.availableForWork && (
-              <div className="hero-status mb-3">
-                <span className="status-dot" aria-hidden="true" />
-                Available for new opportunities
-              </div>
-            )}
 
             <span className="eyebrow">{profile.role}</span>
             <h1 className="hero-name font-display mt-2">

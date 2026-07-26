@@ -6,10 +6,10 @@
       "id": "proj-synapse-pipeline",
       "title": "Azure Synapse Data Pipeline",
       "featured": true,
-      "summary": "Complex data pipelines improving data ingestion and transformation processes.",
-      "description": "Built and scheduled complex data pipelines on Azure Synapse for Tsebo Solutions. This initiative streamlined data ingestion and transformation logic, ensuring reliable, high-performance analytics.",
+      "summary": "Built and scheduled complex data pipelines, improving data ingestion and transformation processes.",
+      "description": "Designed and managed complex data pipelines on Azure Synapse for Tsebo Solutions Group, streamlining data ingestion, transformation logic, and scheduling for reliable analytics.",
       "image": null,
-      "skillIds": ["skill-azure", "skill-synapse", "skill-sql", "skill-data"],
+      "skillIds": ["skill-azure", "skill-synapse", "skill-sql", "skill-python"],
       "links": {
         "live": null,
         "repo": null
@@ -18,26 +18,40 @@
     },
     {
       "id": "proj-powerbi-dashboards",
-      "title": "Power BI Enterprise Dashboards",
+      "title": "Enterprise Power BI Dashboards",
       "featured": true,
-      "summary": "Interactive dashboards facilitating data-driven decision-making.",
-      "description": "Developed insightful, interactive dashboards for multiple organisations using advanced DAX and M Query. This included an HR analytics platform with a gamified employee energy dashboard built on Fabric pipelines.",
+      "summary": "Developed insightful, interactive dashboards for multiple organisations, facilitating data-driven decision-making.",
+      "description": "Architected and delivered enterprise-grade Power BI solutions using advanced DAX, M Query, and robust data modeling practices to drive strategic business decision-making.",
       "image": null,
       "skillIds": ["skill-powerbi", "skill-fabric", "skill-powerplatform"],
       "links": {
         "live": null,
         "repo": null
       },
-      "year": "2024"
+      "year": "2024 - 2025"
     },
     {
       "id": "proj-python-automation",
-      "title": "Python Automation & AI",
+      "title": "Python Automation & AI Solutions",
       "featured": true,
-      "summary": "Python scripts for automating data collection, OCR, sentiment analysis, and reporting.",
-      "description": "Created comprehensive Python-based solutions for operations, including web scraping, sentiment analysis, and an end-to-end document extraction solution combining Azure Document Intelligence with React and Python.",
+      "summary": "Created Python scripts for automating data collection, OCR, sentiment analysis, and reporting tasks.",
+      "description": "Engineered robust Python-based automation frameworks including web scraping, sentiment analysis workflows, and an end-to-end document extraction solution combining Azure Document Intelligence with React and Python.",
       "image": null,
       "skillIds": ["skill-python", "skill-azure", "skill-pyspark"],
+      "links": {
+        "live": null,
+        "repo": null
+      },
+      "year": "2024 - 2025"
+    },
+    {
+      "id": "proj-fabric-hr-analytics",
+      "title": "Fabric HR Analytics Platform",
+      "featured": true,
+      "summary": "Gamified employee energy dashboard built on Fabric pipelines with parquet-backed storage.",
+      "description": "Spearheaded an enterprise HR analytics platform featuring a gamified employee energy dashboard, built on Microsoft Fabric data pipelines with parquet-backed storage for high-performance analytics.",
+      "image": null,
+      "skillIds": ["skill-fabric", "skill-python", "skill-powerbi"],
       "links": {
         "live": null,
         "repo": null

@@ -50,7 +50,7 @@ function App() {
   return (
     <>
       <AuroraBackground />
-      <Navbar navigation={data.site.navigation} />
+      <Navbar navigation={data.site.navigation} profile={data.profile} />
 
       <main>
         {enabledSectionIds.map((id) => sectionMap[id] ?? null)}

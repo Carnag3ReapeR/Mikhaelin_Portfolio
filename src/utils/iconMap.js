@@ -8,6 +8,7 @@ import {
   FiGithub,
   FiLinkedin,
   FiMail,
+  FiPhone,
   FiTwitter,
   FiMonitor,
   FiServer,
@@ -21,12 +22,14 @@ import {
   FiCode,
   FiBriefcase,
   FiBookOpen,
+  FiCloud
 } from 'react-icons/fi';
 
 const ICON_MAP = {
   FiGithub,
   FiLinkedin,
   FiMail,
+  FiPhone,
   FiTwitter,
   FiMonitor,
   FiServer,
@@ -40,6 +43,7 @@ const ICON_MAP = {
   FiCode,
   FiBriefcase,
   FiBookOpen,
+  FiCloud
 };
 
 // Resolve an icon name string (from JSON) to a react-icons component.

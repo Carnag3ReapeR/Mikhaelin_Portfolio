@@ -10,10 +10,10 @@ function Footer({ tagline, name }) {
     <footer className="site-footer glass-panel">
       <div className="container-app">
         <p className="text-muted-custom font-mono mb-1" style={{ fontSize: '0.85rem' }}>
-          {tagline}
+          <span className="oi oi-tag gradient-text bold" aria-hidden="true">{tagline}</span> 
         </p>
         <p className="text-muted-custom mb-0" style={{ fontSize: '0.8rem' }}>
-          © {year} {name}. All rights reserved.
+          <span className="oi oi-copyright" aria-hidden="true"></span>© {year} {name}. All rights reserved.
         </p>
       </div>
     </footer>
