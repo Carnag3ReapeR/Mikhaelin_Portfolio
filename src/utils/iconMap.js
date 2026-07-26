@@ -22,7 +22,8 @@ import {
   FiCode,
   FiBriefcase,
   FiBookOpen,
-  FiCloud
+  FiCloud,
+
 } from 'react-icons/fi';
 
 const ICON_MAP = {

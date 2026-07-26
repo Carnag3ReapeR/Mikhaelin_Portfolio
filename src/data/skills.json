@@ -1,47 +1,206 @@
 {
   "_comment": "DIMENSION table: each skill has a unique 'id' that projects.json and experience.json reference via their 'skillIds' arrays. This keeps skill names defined in exactly one place — rename or re-icon a skill here and it updates everywhere it's referenced.",
-
   "categories": [
-    { "id": "cat-languages", "label": "Languages", "icon": "FiCode" },
-    { "id": "cat-data", "label": "Data & Analytics", "icon": "FiDatabase" },
-    { "id": "cat-cloud", "label": "Cloud & Infrastructure", "icon": "FiCloud" },
-    { "id": "cat-tools", "label": "Tools & DevOps", "icon": "FiTool" },
-    { "id": "cat-arch", "label": "Architecture & Delivery", "icon": "FiBriefcase" }
+    {
+      "id": "cat-languages",
+      "label": "Languages",
+      "icon": "FiCode"
+    },
+    {
+      "id": "cat-data",
+      "label": "Data & Analytics",
+      "icon": "FiDatabase"
+    },
+    {
+      "id": "cat-cloud",
+      "label": "Cloud & Infrastructure",
+      "icon": "FiCloud"
+    },
+    {
+      "id": "cat-tools",
+      "label": "Tools & DevOps",
+      "icon": "FiTool"
+    },
+    {
+      "id": "cat-arch",
+      "label": "Architecture & Delivery",
+      "icon": "FiBriefcase"
+    }
   ],
-
   "items": [
-    { "id": "skill-python", "name": "Python", "categoryId": "cat-languages", "level": 95 },
-    { "id": "skill-csharp", "name": "C# / .NET", "categoryId": "cat-languages", "level": 90 },
-    { "id": "skill-sql", "name": "SQL", "categoryId": "cat-languages", "level": 92 },
-    { "id": "skill-ts", "name": "TypeScript / JavaScript", "categoryId": "cat-languages", "level": 85 },
-    { "id": "skill-kotlin", "name": "Kotlin / Java", "categoryId": "cat-languages", "level": 82 },
-    { "id": "skill-dart-flutter", "name": "Dart / Flutter", "categoryId": "cat-languages", "level": 85 },
-    { "id": "skill-powerfx", "name": "Power Fx", "categoryId": "cat-languages", "level": 85 },
-    { "id": "skill-web-langs", "name": "HTML / CSS / PHP / C++", "categoryId": "cat-languages", "level": 80 },
-
-    { "id": "skill-powerbi", "name": "Power BI / DAX / M Query", "categoryId": "cat-data", "level": 95 },
-    { "id": "skill-fabric", "name": "Microsoft Fabric", "categoryId": "cat-data", "level": 92 },
-    { "id": "skill-synapse", "name": "Azure Synapse / Data Factory / Data Lake", "categoryId": "cat-data", "level": 90 },
-    { "id": "skill-pyspark", "name": "PySpark / Pandas / SQLAlchemy", "categoryId": "cat-data", "level": 88 },
-    { "id": "skill-databricks", "name": "Databricks", "categoryId": "cat-data", "level": 85 },
-    { "id": "skill-data-formats", "name": "YML / XML / JSON", "categoryId": "cat-data", "level": 90 },
-
-    { "id": "skill-azure", "name": "Microsoft Azure", "categoryId": "cat-cloud", "level": 95 },
-    { "id": "skill-powerplatform", "name": "Power Platform (Apps / Automate)", "categoryId": "cat-cloud", "level": 95 },
-    { "id": "skill-terraform", "name": "Terraform", "categoryId": "cat-cloud", "level": 88 },
-    { "id": "skill-gcp", "name": "Google Cloud Platform", "categoryId": "cat-cloud", "level": 80 },
-    { "id": "skill-firebase", "name": "Firebase / Vercel", "categoryId": "cat-cloud", "level": 82 },
-
-    { "id": "skill-docker", "name": "Docker", "categoryId": "cat-tools", "level": 85 },
-    { "id": "skill-git", "name": "Git / GitHub", "categoryId": "cat-tools", "level": 92 },
-    { "id": "skill-azuredevops", "name": "Azure DevOps & CI/CD", "categoryId": "cat-tools", "level": 90 },
-    { "id": "skill-visualstudio", "name": "Visual Studio / VS Code / SSMS / Android Studio", "categoryId": "cat-tools", "level": 95 },
-    { "id": "skill-copilot", "name": "AI Tools (Copilot, Claude Code, Antigravity, Factory AI)", "categoryId": "cat-tools", "level": 92 },
-    { "id": "skill-postman", "name": "Postman / Swagger", "categoryId": "cat-tools", "level": 90 },
-
-    { "id": "skill-solution-arch", "name": "Solution Architecture & System Flow Design", "categoryId": "cat-arch", "level": 92 },
-    { "id": "skill-tech-lead", "name": "Technical Leadership & Mentoring", "categoryId": "cat-arch", "level": 90 },
-    { "id": "skill-business-analysis", "name": "Business Analysis (BRD / SDD Documentation)", "categoryId": "cat-arch", "level": 90 },
-    { "id": "skill-stakeholder", "name": "Timeline & Stakeholder Management", "categoryId": "cat-arch", "level": 88 }
+    {
+      "id": "skill-python",
+      "name": "Python",
+      "categoryId": "cat-languages",
+      "level": 95
+    },
+    {
+      "id": "skill-csharp",
+      "name": "C# / .NET",
+      "categoryId": "cat-languages",
+      "level": 90
+    },
+    {
+      "id": "skill-sql",
+      "name": "SQL",
+      "categoryId": "cat-languages",
+      "level": 92
+    },
+    {
+      "id": "skill-ts",
+      "name": "TypeScript / JavaScript",
+      "categoryId": "cat-languages",
+      "level": 85
+    },
+    {
+      "id": "skill-kotlin",
+      "name": "Kotlin / Java",
+      "categoryId": "cat-languages",
+      "level": 82
+    },
+    {
+      "id": "skill-dart-flutter",
+      "name": "Dart / Flutter",
+      "categoryId": "cat-languages",
+      "level": 85
+    },
+    {
+      "id": "skill-powerfx",
+      "name": "Power Fx",
+      "categoryId": "cat-languages",
+      "level": 85
+    },
+    {
+      "id": "skill-web-langs",
+      "name": "HTML / CSS / PHP / C++",
+      "categoryId": "cat-languages",
+      "level": 80
+    },
+    {
+      "id": "skill-powerbi",
+      "name": "Power BI / DAX / M Query",
+      "categoryId": "cat-data",
+      "level": 95
+    },
+    {
+      "id": "skill-fabric",
+      "name": "Microsoft Fabric",
+      "categoryId": "cat-data",
+      "level": 92
+    },
+    {
+      "id": "skill-synapse",
+      "name": "Azure Synapse / Data Factory",
+      "categoryId": "cat-data",
+      "level": 90
+    },
+    {
+      "id": "skill-pyspark",
+      "name": "PySpark / Pandas / SQLAlchemy",
+      "categoryId": "cat-data",
+      "level": 88
+    },
+    {
+      "id": "skill-databricks",
+      "name": "Databricks",
+      "categoryId": "cat-data",
+      "level": 85
+    },
+    {
+      "id": "skill-data-formats",
+      "name": "YML / XML / JSON",
+      "categoryId": "cat-data",
+      "level": 90
+    },
+    {
+      "id": "skill-azure",
+      "name": "Microsoft Azure",
+      "categoryId": "cat-cloud",
+      "level": 95
+    },
+    {
+      "id": "skill-powerplatform",
+      "name": "Power Platform (Apps / Automate)",
+      "categoryId": "cat-cloud",
+      "level": 95
+    },
+    {
+      "id": "skill-terraform",
+      "name": "Terraform",
+      "categoryId": "cat-cloud",
+      "level": 88
+    },
+    {
+      "id": "skill-gcp",
+      "name": "Google Cloud Platform",
+      "categoryId": "cat-cloud",
+      "level": 80
+    },
+    {
+      "id": "skill-firebase",
+      "name": "Firebase / Vercel",
+      "categoryId": "cat-cloud",
+      "level": 82
+    },
+    {
+      "id": "skill-docker",
+      "name": "Docker",
+      "categoryId": "cat-tools",
+      "level": 85
+    },
+    {
+      "id": "skill-git",
+      "name": "Git / GitHub",
+      "categoryId": "cat-tools",
+      "level": 92
+    },
+    {
+      "id": "skill-azuredevops",
+      "name": "Azure DevOps & CI/CD",
+      "categoryId": "cat-tools",
+      "level": 90
+    },
+    {
+      "id": "skill-visualstudio",
+      "name": "Visual Studio / VS Code / SSMS / Android Studio",
+      "categoryId": "cat-tools",
+      "level": 95
+    },
+    {
+      "id": "skill-copilot",
+      "name": "AI Tools (Copilot, Claude Code, Antigravity, Factory AI)",
+      "categoryId": "cat-tools",
+      "level": 92
+    },
+    {
+      "id": "skill-postman",
+      "name": "Postman / Swagger",
+      "categoryId": "cat-tools",
+      "level": 90
+    },
+    {
+      "id": "skill-solution-arch",
+      "name": "Solution Architecture & System Flow Design",
+      "categoryId": "cat-arch",
+      "level": 92
+    },
+    {
+      "id": "skill-tech-lead",
+      "name": "Technical Leadership & Mentoring",
+      "categoryId": "cat-arch",
+      "level": 90
+    },
+    {
+      "id": "skill-business-analysis",
+      "name": "Business Analysis (BRD / SDD Documentation)",
+      "categoryId": "cat-arch",
+      "level": 90
+    },
+    {
+      "id": "skill-stakeholder",
+      "name": "Timeline & Stakeholder Management",
+      "categoryId": "cat-arch",
+      "level": 88
+    }
   ]
 }

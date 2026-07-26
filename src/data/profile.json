@@ -4,7 +4,7 @@
   "initials": "M.R",
   "role": "Senior Software Developer | Technical Lead",
   "tagline": "Building and architecting full-stack, cloud, and data engineering solutions.",
-  "location": "Pinetown, KwaZulu-Natal",
+  "location": "KwaZulu-Natal",
   "email": "ramsaroopm@gmail.com",
   "phone": "0837849345",
   "resumeFile": "./Mikhaelin Ramsaroop - CV (Latest).docx",
@@ -43,7 +43,7 @@
   },
   "terminal": {
     "_comment": "Powers the signature hero 'terminal window' component. Each line is typed out in sequence.",
-    "user": "guest",
+    "user": "user",
     "host": "portfolio",
     "commandLines": [
       "whoami",

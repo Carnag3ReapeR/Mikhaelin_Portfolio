@@ -10,16 +10,22 @@ import { FiExternalLink, FiGithub } from 'react-icons/fi';
 import SectionTitle from '../ui/SectionTitle';
 import GlassCard from '../ui/GlassCard';
 import SkillTag from '../ui/SkillTag';
+import { getIcon } from '../../utils/iconMap';
 
 function ProjectCard({ project }) {
+  const PlaceholderIcon = project.icon ? getIcon(project.icon) : null;
+
   return (
     <div className="project-card-wrapper">
-      {project.featured && <span className="featured-badge">Featured</span>}
-      <br />
-      <GlassCard as="article" className="project-card" interactive>
+      <GlassCard as="article" className={`project-card ${project.featured ? 'project-card--featured' : ''}`} interactive>
+        {project.featured && <span className="featured-badge" aria-hidden="true">Featured</span>}
         <div className="project-card-media">
           {project.image ? (
             <img src={project.image} alt={`${project.title} preview`} />
+          ) : PlaceholderIcon ? (
+            <span className="placeholder-icon" aria-hidden="true">
+              <PlaceholderIcon />
+            </span>
           ) : (
             <span className="placeholder-glyph" aria-hidden="true">
               {project.title
