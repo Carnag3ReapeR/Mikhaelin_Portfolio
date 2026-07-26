@@ -1,0 +1,46 @@
+/*
+  variables.css
+  -------------
+  Default values for every themeable CSS custom property in the app.
+  These are the FALLBACKS used before useTheme.js applies the values from
+  data/site.json#theme (and during server rendering / before JS runs).
+
+  IMPORTANT: If you add a new variable here, also add it to
+  src/data/site.json#theme so it stays editable from the JSON file.
+*/
+
+:root {
+  /* --- Surfaces & background --- */
+  --color-bg: #0b1120;
+  --color-bg-alt: #0f172a;
+  --color-surface: rgba(255, 255, 255, 0.06);
+  --color-surface-strong: rgba(255, 255, 255, 0.1);
+  --color-border: rgba(255, 255, 255, 0.14);
+
+  /* --- Text --- */
+  --color-text: #e6ebf5;
+  --color-text-muted: #94a3b8;
+
+  /* --- Accents --- */
+  --color-accent-1: #5cffc9;
+  /* violet — primary accent */
+  --color-accent-2: #a7ee22;
+  /* cyan — secondary accent */
+  --color-accent-3: #f472b6;
+  /* pink — tertiary accent */
+  --color-success: #34d399;
+
+  /* --- Typography --- */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* --- Derived / structural tokens (not theme-editable, kept consistent) --- */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --blur-glass: 16px;
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.35);
+  --transition-base: 220ms ease;
+  --container-max: 1160px;
+}

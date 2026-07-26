@@ -1,0 +1,46 @@
+{
+  "_comment": "DIMENSION table for education / certifications, ordered most-recent-first.",
+
+  "items": [
+    {
+      "id": "edu-cert-fabric",
+      "institution": "Microsoft",
+      "credential": "Fabric Analytics Engineer (DP-600)",
+      "startDate": "Recent",
+      "endDate": "Recent",
+      "description": "Certification for data professionals who design, build, and deploy enterprise-scale data analytics solutions."
+    },
+    {
+      "id": "edu-cert-azure",
+      "institution": "Microsoft",
+      "credential": "Azure Data Engineer Associate (DP-203)",
+      "startDate": "Recent",
+      "endDate": "Recent",
+      "description": "Certification covering integration, transformation, and consolidation of data from various structured and unstructured data systems into structures that are suitable for building analytics solutions."
+    },
+    {
+      "id": "edu-degree-bsc",
+      "institution": "Pearson Institute of Higher Education",
+      "credential": "BSc Information Technology",
+      "startDate": "2016",
+      "endDate": "2018",
+      "description": "Bachelor of Science in Information Technology."
+    },
+    {
+      "id": "edu-cert-is",
+      "institution": "CTI",
+      "credential": "Higher Certificate in Information Systems (Software Development)",
+      "startDate": "2015",
+      "endDate": "2016",
+      "description": "Foundational certification in software development and information systems."
+    },
+    {
+      "id": "edu-school",
+      "institution": "Durban High School",
+      "credential": "Matric",
+      "startDate": "2010",
+      "endDate": "2014",
+      "description": ""
+    }
+  ]
+}

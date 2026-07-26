@@ -1,0 +1,9 @@
+{
+  "_comment": "DIMENSION table for social / contact links shown in the navbar, hero, and footer. 'icon' names map to react-icons/fi components — see src/utils/iconMap.js.",
+
+  "items": [
+    { "id": "soc-email", "platform": "Email", "url": "mailto:ramsaroopm@gmail.com", "icon": "FiMail" },
+    { "id": "soc-github", "platform": "GitHub", "url": "https://github.com/Carnag3ReapeR", "icon": "FiGithub" },
+    { "id": "soc-linkedin", "platform": "LinkedIn", "url": "https://www.linkedin.com/in/mikhaelin-ramsaroop-991242177", "icon": "FiLinkedin" }
+  ]
+}

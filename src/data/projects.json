@@ -1,0 +1,48 @@
+{
+  "_comment": "DIMENSION table of portfolio projects. Each project references skills used via 'skillIds' (foreign keys into skills.json#items). Set 'featured: true' to pin a project to the top of the grid. 'image' can be a path under /public/images or left null to show the generated placeholder glyph.",
+
+  "items": [
+    {
+      "id": "proj-synapse-pipeline",
+      "title": "Azure Synapse Data Pipeline",
+      "featured": true,
+      "summary": "Complex data pipelines improving data ingestion and transformation processes.",
+      "description": "Built and scheduled complex data pipelines on Azure Synapse for Tsebo Solutions. This initiative streamlined data ingestion and transformation logic, ensuring reliable, high-performance analytics.",
+      "image": null,
+      "skillIds": ["skill-azure", "skill-synapse", "skill-sql", "skill-data"],
+      "links": {
+        "live": null,
+        "repo": null
+      },
+      "year": "2024"
+    },
+    {
+      "id": "proj-powerbi-dashboards",
+      "title": "Power BI Enterprise Dashboards",
+      "featured": true,
+      "summary": "Interactive dashboards facilitating data-driven decision-making.",
+      "description": "Developed insightful, interactive dashboards for multiple organisations using advanced DAX and M Query. This included an HR analytics platform with a gamified employee energy dashboard built on Fabric pipelines.",
+      "image": null,
+      "skillIds": ["skill-powerbi", "skill-fabric", "skill-powerplatform"],
+      "links": {
+        "live": null,
+        "repo": null
+      },
+      "year": "2024"
+    },
+    {
+      "id": "proj-python-automation",
+      "title": "Python Automation & AI",
+      "featured": true,
+      "summary": "Python scripts for automating data collection, OCR, sentiment analysis, and reporting.",
+      "description": "Created comprehensive Python-based solutions for operations, including web scraping, sentiment analysis, and an end-to-end document extraction solution combining Azure Document Intelligence with React and Python.",
+      "image": null,
+      "skillIds": ["skill-python", "skill-azure", "skill-pyspark"],
+      "links": {
+        "live": null,
+        "repo": null
+      },
+      "year": "2025"
+    }
+  ]
+}

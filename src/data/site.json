@@ -1,0 +1,70 @@
+{
+  "_comment": "Site-wide configuration. Two things live here: 1) which sections appear and in what order (toggle a section off by setting 'enabled: false' — no code changes needed), and 2) the colour theme, applied at runtime as CSS custom properties (see src/hooks/useTheme.js). Change the hex values below to re-skin the entire site.",
+  "navigation": {
+    "brandText": "Mikhaelin",
+    "sections": [
+      {
+        "id": "home",
+        "label": "Home",
+        "enabled": true
+      },
+      {
+        "id": "about",
+        "label": "About Me",
+        "enabled": true
+      },
+      {
+        "id": "skills",
+        "label": "My Skills",
+        "enabled": true
+      },
+      {
+        "id": "projects",
+        "label": "My Projects",
+        "enabled": true
+      },
+      {
+        "id": "experience",
+        "label": "My Experience",
+        "enabled": true
+      },
+      {
+        "id": "education",
+        "label": "My Education",
+        "enabled": true
+      },
+      {
+        "id": "contact",
+        "label": "My Contact Info",
+        "enabled": true
+      }
+    ]
+  },
+  "theme": {
+  "_comment": "Professional dark blue + pink theme",
+
+  "--color-bg": "#0f172a",
+  "--color-bg-alt": "#16213e",
+
+  "--color-surface": "rgba(255, 255, 255, 0.05)",
+  "--color-surface-strong": "rgba(255, 255, 255, 0.08)",
+  "--color-border": "rgba(255, 255, 255, 0.12)",
+
+  "--color-text": "#f8fafc",
+  "--color-text-muted": "#94a3b8",
+
+  "--color-accent-1": "#ec4899",
+  "--color-accent-2": "#3b82f6",
+  "--color-accent-3": "#8b5cf6",
+
+  "--color-success": "#22c55e",
+
+  "--font-display": "'Plus Jakarta Sans', sans-serif",
+  "--font-body": "'Plus Jakarta Sans', sans-serif",
+  "--font-mono": "'JetBrains Mono', monospace"
+},
+  "footer": {
+    "tagline": "A website about a developer, who codes to learn.",
+    "showBackToTop": true
+  }
+}

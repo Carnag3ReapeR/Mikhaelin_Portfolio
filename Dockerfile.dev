@@ -1,0 +1,23 @@
+# Dockerfile.dev
+# -----------------------------------------------------------------------------
+# DEVELOPMENT image. Runs the Vite dev server with hot-module-reload inside a
+# container, so you get a consistent Node environment without installing
+# Node locally. Source code is mounted as a volume (see docker-compose.yml),
+# so edits on your machine are picked up instantly inside the container.
+# -----------------------------------------------------------------------------
+
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install dependencies first (cached layer).
+COPY package.json package-lock.json* ./
+RUN npm ci
+
+# Source is bind-mounted at runtime by docker-compose, so we don't COPY it
+# here — this keeps rebuilds fast, since editing a source file never
+# invalidates this image layer.
+
+EXPOSE 5173
+
+CMD ["npm", "run", "dev"]

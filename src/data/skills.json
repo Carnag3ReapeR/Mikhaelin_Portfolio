@@ -1,0 +1,37 @@
+{
+  "_comment": "DIMENSION table: each skill has a unique 'id' that projects.json and experience.json reference via their 'skillIds' arrays. This keeps skill names defined in exactly one place — rename or re-icon a skill here and it updates everywhere it's referenced.",
+
+  "categories": [
+    { "id": "cat-languages", "label": "Languages", "icon": "FiCode" },
+    { "id": "cat-data", "label": "Data & Analytics", "icon": "FiDatabase" },
+    { "id": "cat-cloud", "label": "Cloud & Infrastructure", "icon": "FiCloud" },
+    { "id": "cat-tools", "label": "Tools & DevOps", "icon": "FiTool" }
+  ],
+
+  "items": [
+    { "id": "skill-python", "name": "Python", "categoryId": "cat-languages", "level": 95 },
+    { "id": "skill-csharp", "name": "C#", "categoryId": "cat-languages", "level": 90 },
+    { "id": "skill-sql", "name": "SQL", "categoryId": "cat-languages", "level": 90 },
+    { "id": "skill-ts", "name": "TypeScript / JavaScript", "categoryId": "cat-languages", "level": 85 },
+    { "id": "skill-kotlin", "name": "Kotlin / Java", "categoryId": "cat-languages", "level": 80 },
+    { "id": "skill-powerfx", "name": "Power Fx", "categoryId": "cat-languages", "level": 85 },
+
+    { "id": "skill-powerbi", "name": "Power BI / DAX / M Query", "categoryId": "cat-data", "level": 95 },
+    { "id": "skill-fabric", "name": "Microsoft Fabric", "categoryId": "cat-data", "level": 90 },
+    { "id": "skill-synapse", "name": "Azure Synapse / Data Factory", "categoryId": "cat-data", "level": 90 },
+    { "id": "skill-pyspark", "name": "PySpark / Pandas", "categoryId": "cat-data", "level": 85 },
+    { "id": "skill-databricks", "name": "Databricks", "categoryId": "cat-data", "level": 80 },
+
+    { "id": "skill-azure", "name": "Microsoft Azure", "categoryId": "cat-cloud", "level": 95 },
+    { "id": "skill-powerplatform", "name": "Power Platform", "categoryId": "cat-cloud", "level": 95 },
+    { "id": "skill-terraform", "name": "Terraform", "categoryId": "cat-cloud", "level": 85 },
+    { "id": "skill-gcp", "name": "Google Cloud Platform", "categoryId": "cat-cloud", "level": 80 },
+    { "id": "skill-firebase", "name": "Firebase", "categoryId": "cat-cloud", "level": 80 },
+
+    { "id": "skill-docker", "name": "Docker", "categoryId": "cat-tools", "level": 85 },
+    { "id": "skill-git", "name": "Git / GitHub", "categoryId": "cat-tools", "level": 90 },
+    { "id": "skill-azuredevops", "name": "Azure DevOps", "categoryId": "cat-tools", "level": 90 },
+    { "id": "skill-visualstudio", "name": "Visual Studio / VS Code", "categoryId": "cat-tools", "level": 95 },
+    { "id": "skill-copilot", "name": "GitHub Copilot", "categoryId": "cat-tools", "level": 90 }
+  ]
+}

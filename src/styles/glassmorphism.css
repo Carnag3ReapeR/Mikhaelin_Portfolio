@@ -1,0 +1,73 @@
+/*
+  glassmorphism.css
+  -----------------
+  Reusable "frosted glass" utility classes used across the app. Centralising
+  the glass effect here means every card, navbar, and modal looks and
+  behaves consistently, and the whole look can be tuned from one file.
+*/
+
+/* Base glass panel: translucent surface + blur + soft border + shadow. */
+.glass-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(var(--blur-glass)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--blur-glass)) saturate(140%);
+  box-shadow: var(--shadow-glass);
+  transition: transform var(--transition-base), border-color var(--transition-base),
+    background var(--transition-base), box-shadow var(--transition-base);
+}
+
+/* A slightly more opaque variant for elements that need better contrast,
+   e.g. the sticky navbar sitting over busy background art. */
+.glass-panel--strong {
+  background: var(--color-surface-strong);
+}
+
+/* Hover-lift interaction used on cards (projects, skills, timeline). */
+.glass-panel--interactive:hover,
+.glass-panel--interactive:focus-within {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--color-accent-1) 55%, var(--color-border));
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* Thin glass "pill" used for skill tags and metadata chips. */
+.glass-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  white-space: nowrap;
+}
+
+/* Gradient text used sparingly for headline emphasis. */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--color-accent-1),
+    var(--color-accent-2) 60%,
+    var(--color-accent-3)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Respect users who've asked for reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .glass-panel,
+  .glass-panel--interactive:hover,
+  .glass-panel--interactive:focus-within {
+    transition: none;
+    transform: none;
+  }
+}

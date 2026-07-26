@@ -1,0 +1,92 @@
+{
+  "_comment": "DIMENSION table for work history, ordered most-recent-first. 'endDate: null' means the role is current. 'skillIds' are foreign keys into skills.json#items.",
+
+  "items": [
+    {
+      "id": "exp-ey-senior",
+      "role": "Data Analyst & Software Engineer",
+      "company": "EY",
+      "location": "South Africa",
+      "startDate": "2025-01",
+      "endDate": null,
+      "bullets": [
+        "Provided technical leadership on high-priority initiatives — defining solution architecture, setting development standards, managing technical risk, and mentoring junior developers.",
+        "Architected enterprise-grade Power BI solutions and Microsoft Fabric data pipelines using a thin-layer architecture.",
+        "Engineered robust Python-based automation, including data extraction, web-scraping, and an end-to-end document extraction solution using Azure Document Intelligence.",
+        "Implemented Terraform-based Azure infrastructure and built CI/CD pipelines for reliable deployment."
+      ],
+      "skillIds": ["skill-python", "skill-powerbi", "skill-fabric", "skill-azure", "skill-terraform", "skill-azuredevops"]
+    },
+    {
+      "id": "exp-tsebo-data",
+      "role": "Data Scientist",
+      "company": "Tsebo Solutions Group",
+      "location": "South Africa",
+      "startDate": "2024-01",
+      "endDate": "2024-11",
+      "bullets": [
+        "Built Power BI dashboards using DAX and M Query to support business decision-making.",
+        "Created Power Apps and automated workflows with Power Automate.",
+        "Designed and managed data pipelines on Azure Synapse, including scheduling and transformation logic.",
+        "Developed Python-based solutions for OCR, sentiment analysis, and web scraping."
+      ],
+      "skillIds": ["skill-python", "skill-powerbi", "skill-synapse", "skill-powerplatform", "skill-azure"]
+    },
+    {
+      "id": "exp-ey-junior",
+      "role": "Junior Developer",
+      "company": "EY",
+      "location": "South Africa",
+      "startDate": "2022-04",
+      "endDate": "2023-11",
+      "bullets": [
+        "Developed and maintained Power BI dashboards using M Query.",
+        "Automated business processes through Power Apps and Power Automate.",
+        "Performed Python-based data analysis, including OCR and sentiment analysis.",
+        "Contributed to business analysis documentation (BRD, SDD) and timeline management."
+      ],
+      "skillIds": ["skill-python", "skill-powerbi", "skill-powerplatform"]
+    },
+    {
+      "id": "exp-customapps-junior",
+      "role": "Junior Developer",
+      "company": "Custom Apps SA",
+      "location": "South Africa",
+      "startDate": "2020-04",
+      "endDate": "2022-03",
+      "bullets": [
+        "Developed web applications using ASP.NET and C#.",
+        "Supported and maintained Android applications built with Kotlin.",
+        "Managed database solutions on Microsoft SQL Server.",
+        "Provided application support and worked on Swagger API controllers."
+      ],
+      "skillIds": ["skill-csharp", "skill-kotlin", "skill-sql", "skill-visualstudio"]
+    },
+    {
+      "id": "exp-tsebo-intern",
+      "role": "IT Intern",
+      "company": "Tsebo Group",
+      "location": "South Africa",
+      "startDate": "2019-05",
+      "endDate": "2020-03",
+      "bullets": [
+        "Developed and supported custom applications and ETL processes using SSIS.",
+        "Managed SharePoint libraries, access control, and Qlik access.",
+        "Assisted in maintaining the company’s data warehouse."
+      ],
+      "skillIds": ["skill-sql"]
+    },
+    {
+      "id": "exp-pczone",
+      "role": "Sales Representative & Technical Support",
+      "company": "PC Zone",
+      "location": "South Africa",
+      "startDate": "2013-01",
+      "endDate": "2014-12",
+      "bullets": [
+        "Provided technical support and managed customer sales operations."
+      ],
+      "skillIds": []
+    }
+  ]
+}

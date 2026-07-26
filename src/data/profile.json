@@ -1,0 +1,51 @@
+{
+  "_comment": "This is the FACT/HUB file in our star-schema data model. It holds the core identity info that every other data file (skills, projects, experience, education) relates back to. See /DATA_MODEL.md at the project root for the full schema diagram.",
+
+  "name": "Mikhaelin Ramsaroop",
+  "initials": "MR",
+  "role": "Senior Software Developer | Technical Lead | Data Engineer | Full-Stack Architect",
+  "tagline": "Building and architecting full-stack, cloud, and data engineering solutions.",
+  "location": "Pinetown, KwaZulu-Natal",
+  "email": "ramsaroopm@gmail.com",
+  "resumeFile": "/Mikhaelin Ramsaroop - CV (Latest).docx",
+  "availableForWork": true,
+  "avatar": "/images/avatar.jpg",
+
+  "about": {
+    "heading": "A little about me",
+    "paragraphs": [
+      "Senior software developer and technical lead with 6+ years building and architecting full-stack, cloud, and data engineering solutions across Python, .NET, and the Microsoft Azure / Power Platform ecosystem.",
+      "Equally comfortable writing production code, designing system architecture, and leading delivery — recent work spans Microsoft Fabric pipelines, enterprise Power BI platforms, Terraform-driven Azure infrastructure, and CI/CD automation, alongside mentoring junior developers and owning solution design on high-priority client engagements.",
+      "Looking for a senior development or technical leadership role where I can stay hands-on with code while helping shape how a team builds."
+    ],
+    "highlights": [
+      { "id": "hl-1", "label": "Years experience", "value": "6+" },
+      { "id": "hl-2", "label": "Core Stacks", "value": "Java, C#, Python & .NET" },
+      { "id": "hl-3", "label": "Cloud Platforms", "value": "Azure & GCP" }
+    ]
+  },
+
+  "terminal": {
+    "_comment": "Powers the signature hero 'terminal window' component. Each line is typed out in sequence.",
+    "user": "guest",
+    "host": "portfolio",
+    "commandLines": [
+      "whoami",
+      "→ Mikhaelin Ramsaroop — Senior Software Developer | Technical Lead",
+      "cat skills.txt",
+      "→ Python · C# · Azure · Power Platform · Data Engineering"
+    ],
+    "roles": [
+      "Senior Software Developer",
+      "Technical Lead",
+      "Data Engineer",
+      "Full-Stack Architect"
+    ]
+  },
+
+  "seo": {
+    "title": "Mikhaelin Ramsaroop — Senior Software Developer | Technical Lead",
+    "description": "Portfolio of Mikhaelin Ramsaroop, a senior software developer and technical lead specialising in Python, .NET, and Azure.",
+    "keywords": ["software developer", "technical lead", "full stack", ".NET", "Python", "Azure", "portfolio"]
+  }
+}

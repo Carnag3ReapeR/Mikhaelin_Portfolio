@@ -1,0 +1,41 @@
+# docker-compose.yml
+# -----------------------------------------------------------------------------
+# Two services, selected via Compose "profiles" so you only run what you need:
+#
+#   docker compose --profile dev up      -> hot-reload dev server on :5173
+#   docker compose --profile prod up     -> production nginx build on :8080
+#
+# (You can also just run one of them directly, e.g. `docker compose up dev`.)
+# -----------------------------------------------------------------------------
+
+services:
+  dev:
+    profiles: ["dev"]
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5173:5173"
+    volumes:
+      # Mount the project into the container so edits on the host are
+      # reflected instantly (Vite's HMR picks them up).
+      - .:/app
+      # Anonymous volume so the container's own node_modules (built for
+      # Linux/alpine) isn't clobbered by the host's node_modules (which
+      # may be built for a different OS/architecture).
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true # improves file-change detection on some hosts (e.g. Windows/WSL, some Docker Desktop setups)
+    stdin_open: true
+    tty: true
+
+  prod:
+    profiles: ["prod"]
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_BASE_PATH: /
+    ports:
+      - "8080:80"
+    restart: unless-stopped
