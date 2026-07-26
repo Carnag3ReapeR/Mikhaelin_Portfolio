@@ -9,7 +9,7 @@
   "email": "ramsaroopm@gmail.com",
   "resumeFile": "/Mikhaelin Ramsaroop - CV (Latest).docx",
   "availableForWork": true,
-  "avatar": "/images/avatar.jpg",
+  "avatar": "./images/avatar.jpg",
 
   "about": {
     "heading": "A little about me",
